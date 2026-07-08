@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion — CSPSE</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rouge:#C8102E; --noir:#0D0D0D; --gris-fonce:#1A1A1A;
+    --gris-moyen:#2C2C2C; --gris-clair:#B0B0B0; --blanc:#F5F3EE;
+    --accent:#E8C547;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--noir);color:var(--blanc);font-family:'DM Sans',sans-serif;min-height:100vh;}
+
+  /* ── ÉCRAN MOT DE PASSE ── */
+  #ecran-mdp{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:100vh;padding:2rem;text-align:center;
+  }
+  #ecran-mdp h1{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:0.1em;color:var(--blanc);margin-bottom:0.5rem;}
+  #ecran-mdp p{color:var(--gris-clair);font-size:0.9rem;margin-bottom:2rem;}
+  #champ-mdp{
+    background:var(--gris-fonce);border:1px solid rgba(255,255,255,0.15);
+    color:var(--blanc);padding:0.9rem 1.5rem;font-size:1rem;font-family:'DM Sans',sans-serif;
+    border-radius:2px;width:280px;max-width:100%;text-align:center;
+    letter-spacing:0.15em;outline:none;margin-bottom:1rem;
+  }
+  #champ-mdp:focus{border-color:var(--rouge);}
+  #btn-connexion{
+    background:var(--rouge);color:#fff;border:none;
+    padding:0.9rem 2.5rem;font-family:'DM Sans',sans-serif;
+    font-size:0.85rem;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;cursor:pointer;border-radius:2px;
+    transition:background 0.2s;
+  }
+  #btn-connexion:hover{background:#8B0A1F;}
+  #msg-erreur{color:#ff6b6b;font-size:0.85rem;margin-top:0.75rem;display:none;}
+
+  /* ── CONTENU GESTION ── */
+  #ecran-contenu{display:none;}
+  header{
+    background:var(--gris-fonce);border-bottom:2px solid var(--rouge);
+    padding:1.2rem 5vw;display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.1em;color:var(--blanc);text-decoration:none;}
+  .logo span{color:var(--rouge);}
+  .btn-retour{
+    font-size:0.78rem;color:var(--gris-clair);text-decoration:none;
+    letter-spacing:0.08em;text-transform:uppercase;
+    transition:color 0.2s;
+  }
+  .btn-retour:hover{color:var(--rouge);}
+  main{padding:3rem 5vw;max-width:1000px;margin:0 auto;}
+  h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.06em;color:var(--rouge);margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(200,16,46,0.3);}
+  .rubrique{margin-bottom:3rem;}
+
+  /* Sections */
+  .g-sections{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.8rem;}
+  .g-btn-section{
+    background:var(--gris-moyen);border:1px solid rgba(255,255,255,0.08);
+    border-radius:2px;padding:1rem;text-align:center;
+    text-decoration:none;color:var(--blanc);font-size:0.82rem;
+    font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+    transition:border-color 0.2s,background 0.2s;display:flex;
+    flex-direction:column;align-items:center;gap:0.4rem;
+  }
+  .g-btn-section span{font-size:1.5rem;}
+  .g-btn-section:hover{border-color:var(--rouge);color:var(--rouge);}
+
+  /* Documents */
+  .g-docs{display:flex;flex-direction:column;gap:0.5rem;}
+  .g-doc-lien{
+    display:block;background:var(--gris-fonce);
+    border:1px solid rgba(255,255,255,0.06);border-radius:2px;
+    padding:0.75rem 1.2rem;text-decoration:none;
+    color:var(--gris-clair);font-size:0.88rem;
+    transition:border-color 0.2s,color 0.2s;
+  }
+  .g-doc-lien:hover{border-color:var(--rouge);color:var(--blanc);}
+
+  @media(max-width:600px){
+    .g-sections{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<!-- ÉCRAN MOT DE PASSE -->
+<div id="ecran-mdp">
+  <div style="font-size:3rem;margin-bottom:1rem;">🔒</div>
+  <h1>Zone Gestion</h1>
+  <p>Accès réservé aux membres du bureau CSPSE</p>
+  <input type="password" id="champ-mdp" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')connexion()">
+  <br>
+  <button id="btn-connexion" onclick="connexion()">Accéder</button>
+  <p id="msg-erreur">⚠️ Mot de passe incorrect.</p>
+</div>
+
+<!-- CONTENU PROTÉGÉ -->
+<div id="ecran-contenu">
+  <header>
+    <a href="index.html" class="logo">CS<span>P</span>SE</a>
+    <a href="index.html" class="btn-retour">← Retour au site</a>
+  </header>
+  <main>
+    <div class="rubrique">
+      <h2>🏛️ Documents administratifs</h2>
+      <div class="g-docs">
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2021/09/statutscspse_signe_152ruedebercy.pdf" target="_blank" class="g-doc-lien">📄 Statuts du club</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/reglement_interieur_cspse_version_projet.pdf" target="_blank" class="g-doc-lien">📋 Règlement intérieur</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/publjournofficiel.pdf" target="_blank" class="g-doc-lien">📰 Publication au Journal Officiel</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/avis-85384481900013-20220621020830-siren-cspse.pdf" target="_blank" class="g-doc-lien">🏢 Fiche INSEE — Numéro SIREN</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2021/09/wp-1632997408542.pdf" target="_blank" class="g-doc-lien">✅ Attestation CASI-PSE-SNCF</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/rib_cspse.pdf" target="_blank" class="g-doc-lien">🏦 RIB du club</a>
+      </div>
+    </div>
+
+    <div class="rubrique">
+      <h2>📅 Réservation Créneau Exceptionnel — Dojo Traversière</h2>
+      <div class="g-docs">
+        <a href="https://calendar.app.google/KHt2bE5nqU54dgWRA" target="_blank" class="g-doc-lien">🗓️ Réserver un créneau exceptionnel</a>
+      </div>
+      <div style="margin-top:1rem;border-radius:2px;overflow:hidden;max-width:800px;">
+        <iframe src="https://calendar.google.com/calendar/embed?src=707044741eef261512a36018fabd71895de7da1a4cb1676e061fe05817fc62ff%40group.calendar.google.com&ctz=Europe%2FParis" style="border:0;width:100%;height:600px;display:block;" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <div class="rubrique">
+      <h2>📋 Rapports d'activité des sections</h2>
+      <div class="g-sections">
+        <a href="https://docs.google.com/spreadsheets/d/1KgxxPdFck9KAuWOXHEzMRLSi1kf3V18Z6vZ69FEJS6Y/edit?usp=drive_link" target="_blank" class="g-btn-section">
+          <span>🥋</span>Aïkido
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1C6GeMnAwOLnInTDk-rj9dq-Msxf5dKrFud_j6C3UDOY/edit?usp=drive_link" target="_blank" class="g-btn-section">
+          <span>🧘</span>Gym / Taï-Chi
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1_PjDfl__44t8E2waJaXK3rWM2j9KZj9ff7mZ08oS7ec/edit?usp=drive_link" target="_blank" class="g-btn-section">
+          <span>🥋</span>Judo / Ju-Jitsu
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1c16SqRqd6j_7efHE6TMqthXMcAHzzOpA5PCy1njlr6k/edit?usp=drive_link" target="_blank" class="g-btn-section">
+          <span>🥷</span>Karaté
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1bjOKOXle8jC5ICqs6LAXWjKx0rwPfGTf3u7htBfX7Tw/edit?usp=drive_link" target="_blank" class="g-btn-section">
+          <span>🤼</span>MMA-JJB
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1icBmPPod9KxpdWW2o_K0iqyAw0G3OPHP1dxL4gsXg_w/edit?usp=drive_link" target="_blank" class="g-btn-section">
+          <span>🥊</span>Muaythaï
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1qbnGzGkDHo6STKBdWl2nsEQab4fasWsaxdIVMQNBkl8/edit?usp=drive_link" target="_blank" class="g-btn-section">
+          <span>⛵</span>Voile
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1QGqya0IxWsIIzdN5Ivm_P5dnpOuzPK_IJ1B2qNt8isc/edit?usp=drive_link" target="_blank" class="g-btn-section">
+          <span>🧘‍♀️</span>Yoga
+        </a>
+      </div>
+    </div>
+
+    <div class="rubrique">
+      <h2>📊 Rapports d'activité du club</h2>
+      <div class="g-docs">
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscf-bilan0809.pdf" target="_blank" class="g-doc-lien">📊 Saison 2008-2009</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscf_bilan-cspse_0910.pdf" target="_blank" class="g-doc-lien">📊 Saison 2009-2010</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscf-bilan1011.pdf" target="_blank" class="g-doc-lien">📊 Saison 2010-2011</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscf-bilan1112.pdf" target="_blank" class="g-doc-lien">📊 Saison 2011-2012</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscfbilancspse_2012_2013.pdf" target="_blank" class="g-doc-lien">📊 Saison 2012-2013</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscfbilancspse_2013_2014.pdf" target="_blank" class="g-doc-lien">📊 Saison 2013-2014</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscfbilancspse_2014_2015.pdf" target="_blank" class="g-doc-lien">📊 Saison 2014-2015</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscfbilancspse_2015_2016.pdf" target="_blank" class="g-doc-lien">📊 Saison 2015-2016</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscfbilancspse_2016_2017.pdf" target="_blank" class="g-doc-lien">📊 Saison 2016-2017</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/10/uscfbilancspse_2019_2020.pdf" target="_blank" class="g-doc-lien">📊 Saison 2019-2020</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2024/07/uscfbilancspse_2020_2021.pdf" target="_blank" class="g-doc-lien">📊 Saison 2020-2021</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2024/07/uscfbilancspse_2021_2022.pdf" target="_blank" class="g-doc-lien">📊 Saison 2021-2022</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2024/07/uscfbilancspse_2022_2023.pdf" target="_blank" class="g-doc-lien">📊 Saison 2022-2023</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/uscfbilancspse_2023_2024.pdf" target="_blank" class="g-doc-lien">📊 Saison 2023-2024</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/uscfbilancspse_2024_2025.pdf" target="_blank" class="g-doc-lien">📊 Saison 2024-2025</a>
+      </div>
+    </div>
+
+    <div class="rubrique">
+      <h2>🗂️ Réunions de Bureau et Comité Directeur</h2>
+      <div class="g-docs">
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/rb020500.pdf" target="_blank" class="g-doc-lien">📌 Réunion de Bureau — février-mai 2000</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/rb060600.pdf" target="_blank" class="g-doc-lien">📌 Réunion de Bureau — juin 2000</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/rb171000.pdf" target="_blank" class="g-doc-lien">📌 Réunion de Bureau — 17 octobre 2000</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/cr_tripartite_pse_141106.pdf" target="_blank" class="g-doc-lien">📌 CR Réunion Tripartite PSE — 14 novembre 2006</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/rb_051206.pdf" target="_blank" class="g-doc-lien">📌 Réunion de Bureau — 5 décembre 2006</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/rb_200207.pdf" target="_blank" class="g-doc-lien">📌 Réunion de Bureau — 20 février 2007</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/rb110401.pdf" target="_blank" class="g-doc-lien">📌 Réunion de Bureau — avril 2001</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/rb050303.pdf" target="_blank" class="g-doc-lien">📌 Réunion de Bureau — 5 mars 2003</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/rcer300402.pdf" target="_blank" class="g-doc-lien">📌 Réunion CER — 30 avril 2002</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_ca_280813.pdf" target="_blank" class="g-doc-lien">📌 PV Conseil d'Administration — 28 août 2013</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/cr_reunionbureau130313.pdf" target="_blank" class="g-doc-lien">📌 CR Réunion de Bureau — 13 mars 2013</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/fete_ce_140213.pdf" target="_blank" class="g-doc-lien">📌 CR Fête du CE — 14 février 2013</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/cr_tripartite_pse_031115.pdf" target="_blank" class="g-doc-lien">📌 CR Réunion Tripartite PSE — 3 novembre 2015</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/cr_ca_110619.pdf" target="_blank" class="g-doc-lien">📌 CR Conseil d'Administration — 11 juin 2019</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv-reunion-bureau-12-06-2023.pdf" target="_blank" class="g-doc-lien">📌 PV Réunion de Bureau — 12 juin 2023</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/cr_reuniontravauxtraversiere.pdf" target="_blank" class="g-doc-lien">📌 CR Réunion travaux — Dojo Traversière</a>
+      </div>
+    </div>
+
+    <div class="rubrique">
+      <h2>📝 Procès-verbaux d'Assemblées Générales</h2>
+      <div class="g-docs">
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscf-bilan0809.pdf" target="_blank" class="g-doc-lien">📝 AG du 26 janvier 1994</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_ag310194.pdf" target="_blank" class="g-doc-lien">📝 AG du 31 janvier 1994</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_ag260195.pdf" target="_blank" class="g-doc-lien">📝 AG du 26 janvier 1995</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_ag-260196r.pdf" target="_blank" class="g-doc-lien">📝 AG du 26 janvier 1996</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/agex281098.pdf" target="_blank" class="g-doc-lien">📝 AG du 28 octobre 1998</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag150699.pdf" target="_blank" class="g-doc-lien">📝 AG du 15 juin 1999</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag020299.pdf" target="_blank" class="g-doc-lien">📝 AG du 2 février 1999</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag301104.pdf" target="_blank" class="g-doc-lien">📝 AG du 30 novembre 2004</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag070604.pdf" target="_blank" class="g-doc-lien">📝 AG du 7 juin 2004</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_ag_extra200906.pdf" target="_blank" class="g-doc-lien">📝 AG du 20 septembre 2006</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag280606.pdf" target="_blank" class="g-doc-lien">📝 AG du 28 juin 2006</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag_190907.pdf" target="_blank" class="g-doc-lien">📝 AG du 19 septembre 2007</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag_281009.pdf" target="_blank" class="g-doc-lien">📝 AG du 28 octobre 2009</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag_300910.pdf" target="_blank" class="g-doc-lien">📝 AG du 30 septembre 2010</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvag180412.pdf" target="_blank" class="g-doc-lien">📝 AG du 18 avril 2012</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvag280213_complet.pdf" target="_blank" class="g-doc-lien">📝 AG du 28 février 2013</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvag210313.pdf" target="_blank" class="g-doc-lien">📝 AG du 21 mars 2013</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvag110214.pdf" target="_blank" class="g-doc-lien">📝 AG du 11 février 2014</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvag170615.pdf" target="_blank" class="g-doc-lien">📝 AG du 17 juin 2015</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvagextra110516.pdf" target="_blank" class="g-doc-lien">📝 AG du 11 mai 2016</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/cragextra240517.pdf" target="_blank" class="g-doc-lien">📝 AG du 24 mai 2017</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/cragextra160918.pdf" target="_blank" class="g-doc-lien">📝 AG du 16 septembre 2018</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_agextra270619.pdf" target="_blank" class="g-doc-lien">📝 AG du 27 juin 2019</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_agextra261119.pdf" target="_blank" class="g-doc-lien">📝 AG du 26 novembre 2019</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_agextra160323.pdf" target="_blank" class="g-doc-lien">📝 AG du 16 mars 2023</a>
+        <a href="https://cspse.wordpress.com/wp-content/uploads/2026/07/pv-ag_cspse_170626_v7-1.pdf" target="_blank" class="g-doc-lien">📝 AG du 17 juin 2026</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  function connexion() {
+    const mdp = document.getElementById('champ-mdp').value;
+    if (mdp === 'cspse75012') {
+      document.getElementById('ecran-mdp').style.display = 'none';
+      document.getElementById('ecran-contenu').style.display = 'block';
+      sessionStorage.setItem('cspse_auth', '1');
+    } else {
+      document.getElementById('msg-erreur').style.display = 'block';
+      document.getElementById('champ-mdp').value = '';
+      document.getElementById('champ-mdp').focus();
+    }
+  }
+  // Si déjà connecté dans la session
+  if (sessionStorage.getItem('cspse_auth') === '1') {
+    document.getElementById('ecran-mdp').style.display = 'none';
+    document.getElementById('ecran-contenu').style.display = 'block';
+  }
+</script>
+</body>
+</html>

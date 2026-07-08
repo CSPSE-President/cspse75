@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSPSE – Cheminots Sportifs Paris-Sud-Est</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#C8102E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CSPSE">
+<link rel="apple-touch-icon" href="https://cspse.wordpress.com/wp-content/uploads/2018/09/wp-1536407889826.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rouge: #C8102E;
+    --rouge-fonce: #8B0A1F;
+    --noir: #0D0D0D;
+    --gris-fonce: #1A1A1A;
+    --gris-moyen: #2C2C2C;
+    --gris-clair: #B0B0B0;
+    --blanc: #F5F3EE;
+    --accent: #E8C547;
+    --font-titre: 'Bebas Neue', sans-serif;
+    --font-corps: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--noir);
+    color: var(--blanc);
+    font-family: var(--font-corps);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 72px;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(200,16,46,0.3);
+  }
+  .nav-logo {
+    font-family: var(--font-titre);
+    font-size: 2rem;
+    letter-spacing: 0.12em;
+    color: var(--blanc);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--rouge); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    color: var(--gris-clair);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rouge); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    padding: 100px 8vw 0;
+    position: relative;
+    overflow: hidden;
+    background: var(--noir);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,16,46,0.18) 0%, transparent 70%),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(200,16,46,0.04) 40px,
+        rgba(200,16,46,0.04) 42px
+      );
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-titre {
+    font-family: var(--font-titre);
+    font-size: clamp(1.8rem, 4.5vw, 4.5rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: var(--blanc);
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero-titre em {
+    font-style: normal;
+    color: var(--rouge);
+    display: block;
+  }
+  .hero-sous {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--gris-clair);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .btn-primaire {
+    background: var(--rouge);
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    border: none; border-radius: 2px;
+    font-family: var(--font-corps);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primaire:hover { background: var(--rouge-fonce); transform: translateY(-2px); }
+  .btn-secondaire {
+    background: transparent;
+    color: var(--blanc);
+    padding: 0.9rem 2.2rem;
+    border: 1px solid rgba(245,243,238,0.35);
+    border-radius: 2px;
+    font-family: var(--font-corps);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondaire:hover { border-color: var(--rouge); color: var(--rouge); }
+
+  .hero-stats {
+    position: absolute; bottom: 3rem; right: 8vw;
+    display: flex; gap: 3rem;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-nb {
+    font-family: var(--font-titre);
+    font-size: 3rem;
+    color: var(--rouge);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gris-clair);
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 8vw; }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .section-titre {
+    font-family: var(--font-titre);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1;
+    color: var(--blanc);
+    margin-bottom: 3rem;
+  }
+
+  /* ─── BANDE ROUGE ─── */
+  .bande-rouge {
+    background: var(--rouge);
+    padding: 3rem 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .bande-texte {
+    font-family: var(--font-titre);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+  .bande-texte small {
+    display: block;
+    font-family: var(--font-corps);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    opacity: 0.85;
+    margin-top: 0.25rem;
+  }
+  .bande-rouge .btn-blanc {
+    background: #fff;
+    color: var(--rouge);
+    padding: 0.9rem 2.2rem;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .bande-rouge .btn-blanc:hover { opacity: 0.88; }
+
+  /* ─── SPORTS GRID ─── */
+  #sections { background: var(--gris-fonce); }
+  .sports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .sport-card {
+    background: var(--gris-fonce);
+    padding: 2.5rem 2rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .sport-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    height: 3px; width: 0;
+    background: var(--rouge);
+    transition: width 0.3s ease;
+  }
+  .sport-card:hover { background: var(--gris-moyen); }
+  .sport-card:hover::before { width: 100%; }
+  .sport-picto {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .sport-nom {
+    font-family: var(--font-titre);
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: var(--blanc);
+    margin-bottom: 0.5rem;
+  }
+  .sport-adresse {
+    font-size: 0.78rem;
+    color: var(--gris-clair);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.03em;
+  }
+  .sport-horaires {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .sport-equipe {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .sport-equipe-resp {
+    font-size: 0.78rem;
+    color: var(--blanc);
+    font-weight: 600;
+  }
+  .sport-equipe-profs {
+    font-size: 0.75rem;
+    color: var(--gris-clair);
+    line-height: 1.5;
+  }
+  .sport-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    border: 1px solid var(--rouge);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  /* ─── INFOS / HISTOIRE ─── */
+  #infos { background: var(--noir); }
+  .infos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .infos-grid { grid-template-columns: 1fr; gap: 3rem; } }
+  .infos-texte p {
+    color: var(--gris-clair);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+  .infos-texte strong { color: var(--blanc); }
+  .encart {
+    background: var(--gris-fonce);
+    border-left: 4px solid var(--rouge);
+    padding: 2rem;
+    margin-top: 1.5rem;
+  }
+  .encart p { color: var(--gris-clair); font-size: 0.9rem; line-height: 1.7; }
+
+  /* ─── LIEUX ─── */
+  #lieux { background: var(--gris-fonce); }
+  .lieux-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  @media (max-width: 768px) { .lieux-cards { grid-template-columns: 1fr; } }
+  .lieux-cards .lieu-card[style*="grid-column"] > div { grid-template-columns: 1fr !important; }
+  .lieu-card {
+    background: var(--gris-moyen);
+    padding: 2rem;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.2s;
+  }
+  .lieu-card:hover { border-color: var(--rouge); }
+  .lieu-nom {
+    font-family: var(--font-titre);
+    font-size: 1.4rem;
+    color: var(--blanc);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .lieu-adresse {
+    font-size: 0.85rem;
+    color: var(--gris-clair);
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+  }
+  .lieu-sports {
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--noir); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .contact-icone {
+    font-size: 1.3rem;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+  }
+  .contact-detail h4 {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .contact-detail p, .contact-detail a {
+    font-size: 0.95rem;
+    color: var(--gris-clair);
+    text-decoration: none;
+    line-height: 1.5;
+  }
+  .contact-detail a:hover { color: var(--blanc); }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gris-clair);
+    font-weight: 600;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    background: var(--gris-fonce);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--blanc);
+    padding: 0.8rem 1rem;
+    font-family: var(--font-corps);
+    font-size: 0.9rem;
+    border-radius: 2px;
+    transition: border-color 0.2s;
+    outline: none;
+    resize: vertical;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--rouge);
+  }
+  .form-group select option { background: var(--gris-fonce); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--gris-fonce);
+    border-top: 1px solid rgba(200,16,46,0.3);
+    padding: 3rem 8vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: var(--font-titre);
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+    color: var(--blanc);
+  }
+  .footer-logo span { color: var(--rouge); }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--gris-clair);
+    letter-spacing: 0.05em;
+  }
+  .footer-links {
+    display: flex; gap: 1.5rem; list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.78rem;
+    color: var(--gris-clair);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--rouge); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 1; transform: none; }
+
+  /* ─── MOBILE NAV ─── */
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--blanc); margin: 5px 0;
+    transition: all 0.3s;
+  }
+  @media (max-width: 768px) {
+    .hamburger { display: none; }
+    nav {
+      height: auto;
+      flex-wrap: wrap;
+      padding: 0.75rem 3vw;
+      gap: 0.5rem;
+    }
+    .nav-links {
+      display: flex !important;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      width: 100%;
+      padding: 0.5rem 0 0.25rem;
+    }
+    .nav-links li { list-style: none; }
+    .nav-links a {
+      font-size: 0.7rem !important;
+      padding: 0.3rem 0.6rem;
+      background: var(--gris-moyen);
+      border-radius: 2px;
+      display: block;
+      white-space: nowrap;
+    }
+    .hero-stats { position: relative; bottom: auto; right: auto; margin-top: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  /* ─── DIVISEUR ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--rouge), transparent);
+    margin: 0 8vw;
+  }
+
+  /* ─── DIPLÔMES ─── */
+  #diplomes { background: var(--gris-fonce); }
+  .diplomes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+  .diplome-card a {
+    display: block;
+    background: var(--gris-moyen);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .diplome-card a:hover { border-color: var(--rouge); transform: translateY(-3px); }
+  .diplome-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+  .diplome-label {
+    font-size: 0.72rem;
+    color: var(--gris-clair);
+    padding: 0.5rem 0.7rem;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── ZONE PROTÉGÉE ─── */
+  #modal-gestion {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(6px);
+    justify-content: center; align-items: flex-start;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+  }
+  #modal-gestion.actif { display: flex; }
+  .gestion-box {
+    background: var(--gris-fonce);
+    border: 1px solid rgba(200,16,46,0.4);
+    border-radius: 4px;
+    width: 100%; max-width: 860px;
+    padding: 3rem;
+    position: relative;
+  }
+  .gestion-fermer {
+    position: absolute; top: 1rem; right: 1.5rem;
+    background: none; border: none; color: var(--gris-clair);
+    font-size: 1.8rem; cursor: pointer; line-height: 1;
+  }
+  .gestion-fermer:hover { color: var(--rouge); }
+  #ecran-mdp { text-align: center; }
+  #ecran-mdp h2 {
+    font-family: var(--font-titre); font-size: 2.5rem;
+    color: var(--blanc); letter-spacing: 0.08em; margin-bottom: 0.5rem;
+  }
+  #ecran-mdp p { color: var(--gris-clair); font-size: 0.9rem; margin-bottom: 2rem; }
+  #champ-mdp {
+    background: var(--gris-moyen); border: 1px solid rgba(255,255,255,0.15);
+    color: var(--blanc); padding: 0.9rem 1.2rem;
+    font-family: var(--font-corps); font-size: 1rem;
+    border-radius: 2px; width: 280px; max-width: 100%;
+    outline: none; text-align: center; letter-spacing: 0.15em;
+    margin-bottom: 1rem; display: block; margin: 0 auto 1rem;
+  }
+  #champ-mdp:focus { border-color: var(--rouge); }
+  #msg-erreur { color: #ff6b6b; font-size: 0.85rem; margin-top: 0.5rem; display:none; }
+  #ecran-contenu { display: none; }
+  .gestion-titre {
+    font-family: var(--font-titre); font-size: 2.2rem;
+    color: var(--blanc); letter-spacing: 0.06em; margin-bottom: 0.5rem;
+  }
+  .gestion-sous { color: var(--gris-clair); font-size: 0.9rem; margin-bottom: 2.5rem; }
+  .gestion-rubrique {
+    margin-bottom: 2.5rem;
+  }
+  .gestion-rubrique h3 {
+    font-family: var(--font-titre); font-size: 1.4rem;
+    color: var(--rouge); letter-spacing: 0.08em;
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(200,16,46,0.3);
+  }
+  .sections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.8rem;
+  }
+  .section-btn {
+    background: var(--gris-moyen);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px; padding: 0.9rem 1rem;
+    text-align: center; cursor: pointer;
+    text-decoration: none; color: var(--blanc);
+    font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    transition: border-color 0.2s, background 0.2s;
+    display: block;
+  }
+  .section-btn:hover { border-color: var(--rouge); background: var(--gris-fonce); color: var(--rouge); }
+  .section-btn span { display: block; font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .docs-liens {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .doc-btn {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: var(--gris-moyen);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px; padding: 1rem 1.5rem;
+    text-decoration: none; color: var(--blanc);
+    font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .doc-btn:hover { border-color: var(--rouge); background: var(--gris-fonce); color: var(--rouge); }
+  .doc-btn .doc-icone { font-size: 1.5rem; }
+
+  /* ─── VIDÉOS SECTIONS ─── */
+  .sport-video {
+    margin-top: 0.8rem;
+    border-radius: 2px;
+    overflow: hidden;
+    width: 100%;
+  }
+  .sport-video iframe {
+    width: 100%;
+    height: 200px;
+    border: 0;
+    display: block;
+  }
+  .sport-video-label {
+    font-size: 0.7rem;
+    color: var(--gris-clair);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <a href="#hero" class="nav-logo">CS<span>P</span>SE</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#sections">Sports</a></li>
+    <li><a href="#infos">Le Club</a></li>
+    <li><a href="#lieux">Lieux</a></li>
+    <li><a href="#agenda">Agenda Traversière</a></li>
+    <li><a href="#agenda-charenton">Agenda Charenton</a></li>
+    <li><a href="#diplomes">Diplômes</a></li>
+    <li><a href="https://clinquant-fairy-eb731f.netlify.app/" target="_blank" style="color:var(--accent);">💬 Aide</a></li>
+    <li><a href="gestion.html" style="color:var(--rouge);">🔒 Gestion</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <p class="hero-eyebrow">Paris 12e · Depuis 1936</p>
+  <h1 class="hero-titre">Cheminots Sportifs Paris-Sud-Est</h1>
+  <p class="hero-sous">Un club omnisport au cœur du 12e arrondissement, ouvert à tous — débutants comme confirmés.</p>
+  <div class="hero-ctas">
+    <a href="#sections" class="btn-primaire">Découvrir nos sports</a>
+    <a href="#contact" class="btn-secondaire">Nous rejoindre</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-nb">8</div>
+      <div class="stat-label">Disciplines</div>
+    </div>
+    <div class="stat">
+      <div class="stat-nb">2</div>
+      <div class="stat-label">Dojos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-nb">+88</div>
+      <div class="stat-label">Ans d'histoire</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ SECTIONS SPORTIVES ═══════════ -->
+<section id="sections">
+  <p class="section-eyebrow reveal">Nos disciplines</p>
+  <h2 class="section-titre reveal">Sections sportives</h2>
+  <div class="sports-grid">
+
+    <div class="sport-card reveal">
+      <span class="sport-picto">🥋</span>
+      <div class="sport-nom">Aïkido</div>
+      <div class="sport-adresse">📍 Dojo SNCF Charenton · 320bis rue de Charenton, Paris 12e</div>
+      <div class="sport-horaires">Mar · Mer 20h30–22h00 · Ven 18h30–20h30</div>
+      <div class="sport-equipe">
+        <div class="sport-equipe-resp">👤 Jean-Philippe Leroux (Président)</div>
+        <div class="sport-equipe-profs">🥋 <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/dejeps_aikido_reushlepatrice.png" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Patrice Reuschlé</a> (DEJEPS) · William Joseph (CQP)</div>
+      </div>
+
+
+      <div class="sport-reseaux" style="margin-top:0.7rem;font-size:0.78rem;display:flex;flex-wrap:wrap;gap:0.6rem;">
+        <a href="https://www.aikidopatrice.com/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">🌐 Site web</a>
+        <a href="https://www.facebook.com/aikidopatrice" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">📘 Facebook</a>
+        <a href="https://www.instagram.com/aikidopatrice" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">📸 Instagram</a>
+      </div>
+      <span class="sport-tag">Arts martiaux</span>
+      <br>
+      <a href="mailto:jean.philippe.leroux75@gmail.com?subject=Renseignement%20section%20Aikido%20-%20CSPSE" style="display:inline-block;margin-top:1rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--rouge);padding:0.45rem 1rem;border-radius:2px;text-decoration:none;font-weight:600;">✉ Contacter la section</a>
+      <div class="sport-video-label">▶ Vidéo de présentation</div>
+      <div class="sport-video">
+        <iframe src="https://www.youtube.com/embed/kA6loZ5-D34" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="sport-card reveal">
+      <span class="sport-picto">🧘</span>
+      <div class="sport-nom">Gym / Taï-Chi</div>
+      <a href="mailto:jp.joussant@gmail.com?subject=Renseignement%20section%20Gym%20Tai-Chi%20-%20CSPSE" style="display:inline-block;margin-top:1.2rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--rouge);padding:0.45rem 1rem;border-radius:2px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">✉ Contacter la section</a>
+      <div class="sport-adresse">📍 Dojo SNCF Traversière · 17 rue Traversière, Paris 12e</div>
+      <div class="sport-horaires">Lun · Jeu 12h30–13h30 · Mer 12h45–13h45</div>
+      <div class="sport-equipe">
+        <div class="sport-equipe-resp">👤 Jean-Pierre Joussant (Président)</div>
+        <div class="sport-equipe-profs">🥋 <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomegymprofesseurguilleux.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Alain Guilleux</a> · <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomegymprofesseurlefrancois.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Marie-Claude Lefrançois</a></div>
+      </div>
+      <div class="sport-tarifs" style="margin-top:0.8rem;font-size:0.78rem;color:var(--gris-clair);line-height:1.6;">
+        💰 <strong style="color:var(--blanc);">Tarifs annuels</strong><br>
+        SNCF : <span style="color:var(--accent);">212 €</span><br>
+        Extérieur : <span style="color:var(--accent);">262 €</span>
+      </div>
+
+
+      <div class="sport-reseaux" style="margin-top:0.7rem;font-size:0.78rem;display:flex;flex-wrap:wrap;gap:0.6rem;">
+        <a href="https://gym-cspse.lescigales.org/Index.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">🌐 Site web</a>
+        <a href="https://www.facebook.com/p/Gym-Cspse-100014318415740/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">📘 Facebook</a>
+      </div>
+      <span class="sport-tag">Bien-être</span>
+    </div>
+
+    <div class="sport-card reveal">
+      <span class="sport-picto">🥋</span>
+      <div class="sport-nom">Judo / Ju-Jitsu</div>
+      
+      <div class="sport-video-label">▶ Vidéo de présentation</div>
+      <div class="sport-video">
+        <iframe src="https://www.youtube.com/embed/1bVU6SV1dfc" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a href="mailto:jean.judo75@gmail.com?subject=Renseignement%20section%20Judo%20Ju-Jitsu%20-%20CSPSE" style="display:inline-block;margin-top:1.2rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--rouge);padding:0.45rem 1rem;border-radius:2px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">✉ Contacter la section</a>
+      <div class="sport-adresse">📍 Dojo SNCF Charenton · 320bis rue de Charenton, Paris 12e</div>
+      <div class="sport-horaires">Lun · Mar · Jeu 17h30–20h30 · Mer 15h30–20h30 · Sam 14h–20h30 (sur demande)</div>
+      <div class="sport-equipe">
+        <div class="sport-equipe-resp">👤 Philippe Dumain (Président)</div>
+        <div class="sport-equipe-profs">🥋 <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/dejeps-jeanheritier-judo.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Jean Héritier</a> (DEJEPS)</div>
+      </div>
+      <div class="sport-tarifs" style="margin-top:0.8rem;font-size:0.78rem;color:var(--gris-clair);line-height:1.6;">
+        💰 <strong style="color:var(--blanc);">Tarifs annuels</strong><br>
+        Adulte : <span style="color:var(--accent);">204 €</span> · SNCF : <span style="color:var(--accent);">129 €</span><br>
+        Enfant : <span style="color:var(--accent);">184 €</span> · SNCF : <span style="color:var(--accent);">114 €</span><br>
+        Licence : <span style="color:var(--accent);">46 €</span>
+      </div>
+      <div class="sport-reseaux" style="margin-top:0.7rem;font-size:0.78rem;display:flex;flex-wrap:wrap;gap:0.6rem;">
+        <a href="http://www.judo-jujitsu-cspse.fr/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">🌐 Site web</a>
+        <a href="https://www.facebook.com/groups/57343939845" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">📘 Facebook</a>
+      </div>
+      <span class="sport-tag">Arts martiaux</span>
+    </div>
+
+    <div class="sport-card reveal">
+      <span class="sport-picto">🥋</span>
+      <div class="sport-nom">Karaté Shotokan</div>
+      
+      <div class="sport-video-label">▶ Vidéo de présentation</div>
+      <div class="sport-video">
+        <iframe src="https://www.youtube.com/embed/hXBnf4gu6PA" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a href="mailto:praud_jacques@orange.fr?subject=Renseignement%20section%20Karate%20-%20CSPSE" style="display:inline-block;margin-top:1.2rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--rouge);padding:0.45rem 1rem;border-radius:2px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">✉ Contacter la section</a>
+      <div class="sport-adresse">📍 Dojo SNCF Traversière · 17 rue Traversière, Paris 12e</div>
+      <div class="sport-horaires">Mar · Jeu 18h30–20h00 · Sam 17h30–20h · Dim 10h–12h (stages)</div>
+      <div class="sport-equipe">
+        <div class="sport-equipe-resp">👤 Jacques Praud (Président)</div>
+        <div class="sport-equipe-profs">🥋 <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomekaratedif_davidlauret.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">David Lauret</a> (DIF) · Adbelhamid Khodja (DIF) · Jose Silva (DIF) · <a href="https://cspse.wordpress.com/wp-content/uploads/2023/07/diplome-dejeps-yves-degas-karate-page-001.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Yves Degas</a> (BEES1)</div>
+      </div>
+      <div class="sport-tarifs" style="margin-top:0.8rem;font-size:0.78rem;color:var(--gris-clair);line-height:1.6;">
+        💰 <strong style="color:var(--blanc);">Tarifs annuels</strong><br>
+        Adulte de base : <span style="color:var(--accent);">215 €</span> · SNCF : <span style="color:var(--accent);">120 €</span>
+      </div>
+      <div class="sport-reseaux" style="margin-top:0.7rem;font-size:0.78rem;display:flex;flex-wrap:wrap;gap:0.6rem;">
+        <a href="https://www.sports-et-loisirs.fr/clubs-cours/fiche-club+cspse+traversiere-10391.php" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">🌐 Site web</a>
+      </div>
+      <span class="sport-tag">Arts martiaux</span>
+    </div>
+
+    <div class="sport-card reveal">
+      <span class="sport-picto">🤼</span>
+      <div class="sport-nom">MMA-JJB</div>
+      
+      <div class="sport-video-label">▶ Vidéo de présentation</div>
+      <div class="sport-video">
+        <iframe src="https://www.youtube.com/embed/cvcLAp2esKs" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a href="mailto:gestioncspsemma@gmail.com?subject=Renseignement%20section%20MMA-JJB%20-%20CSPSE" style="display:inline-block;margin-top:1.2rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--rouge);padding:0.45rem 1rem;border-radius:2px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">✉ Contacter la section</a>
+      <div class="sport-adresse">📍 Dojo SNCF Traversière · 17 rue Traversière, Paris 12e</div>
+      <div class="sport-horaires">Lun 17h30–21h30 · Mar 14h30–21h30 · Mer 16h–21h30 · Ven 14h30–21h30 · Sam 14h–17h30 · Dim 7h30–10h · Jeu 20h–21h30</div>
+      <div class="sport-equipe">
+        <div class="sport-equipe-resp">👤 <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomedejeps_judo_fabricechamerois.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Fabrice Chamerois</a> (Président)</div>
+        <div class="sport-equipe-profs">🥋 <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/de-perfectionnement-sportif-denis-stutzinger.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Denis Stutzinger</a> (DEJEPS) · <a href="https://cspse.wordpress.com/wp-content/uploads/2026/07/bmf-2-pancrace-eric-conxicoeur.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Éric Conxicoeur</a> (BMF2) · <a href="https://cspse.wordpress.com/wp-content/uploads/2023/12/cfebjjb-mathias-duventru.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Mathias Duvendru</a> (BMF1) · Philippe Jacquet · Basile Van-Cooten</div>
+      </div>
+      <div class="sport-tarifs" style="margin-top:0.8rem;font-size:0.78rem;color:var(--gris-clair);line-height:1.8;">
+        💰 <strong style="color:var(--blanc);">Tarifs</strong> (forfaits annuels, trimestriels, mensuels selon disciplines)<br>
+        <a href="https://drive.google.com/file/d/1ms4WNcGLqPv7T1UPynJmWZgPZl6hpW76/view" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">📄 Tarifs grand public</a>
+        &nbsp;·&nbsp;
+        <a href="https://drive.google.com/file/d/1CuQDH5bGQjPNWzJS1JBGhpWiTCZru929/view" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">📄 Tarifs cheminots</a>
+      </div>
+      <div class="sport-reseaux" style="margin-top:0.7rem;font-size:0.78rem;display:flex;flex-wrap:wrap;gap:0.6rem;">
+        <a href="https://cspse-teamcamp10.fr/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">🌐 Site web</a>
+        <a href="https://fr-fr.facebook.com/denis.stutzinger" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">📘 Facebook</a>
+        <a href="https://www.instagram.com/denis.stutzinger" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">📸 Instagram</a>
+      </div>
+      <span class="sport-tag">Arts martiaux</span>
+    </div>
+
+    <div class="sport-card reveal">
+      <span class="sport-picto">🥊</span>
+      <div class="sport-nom">Muaythaï</div>
+      
+      <div class="sport-video-label">▶ Vidéo de présentation</div>
+      <div class="sport-video">
+        <iframe src="https://www.youtube.com/embed/yoBeeunB-BI" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a href="mailto:gestionthaitopteam@gmail.com?subject=Renseignement%20section%20Muaythai%20-%20CSPSE" style="display:inline-block;margin-top:1.2rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--rouge);padding:0.45rem 1rem;border-radius:2px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">✉ Contacter la section</a>
+      <div class="sport-adresse">📍 Dojo SNCF Charenton · 320bis rue de Charenton, Paris 12e</div>
+      <div class="sport-horaires">Lun · Jeu · Ven 20h30–22h · Sam 9h–14h (prépa/compétition) · Dim 9h–17h</div>
+      <div class="sport-equipe">
+        <div class="sport-equipe-resp">👤 <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomebpjeps_pugi_muaythai_fabricechamerois.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Fabrice Chamerois</a> (Président)</div>
+        <div class="sport-equipe-profs">🥋 Amin Lebsir (BMF1) · Louis Outhier · Paul Nguon · Romain Tommasino · <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/wp-1539979504007.jpeg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Antonio Correia</a> (DIF) · <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/wp-1539979503905.jpeg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Florent Correia</a> (DIF)</div>
+      </div>
+      <div class="sport-tarifs" style="margin-top:0.8rem;font-size:0.78rem;color:var(--gris-clair);line-height:1.6;">
+        💰 <strong style="color:var(--blanc);">Tarifs annuels</strong><br>
+        Adulte : <span style="color:var(--accent);">410 €</span> · SNCF : <span style="color:var(--accent);">180 €</span><br>
+        Enfant : <span style="color:var(--accent);">340 €</span> · SNCF : <span style="color:var(--accent);">180 €</span><br>
+        Licence : <span style="color:var(--accent);">38 €</span>
+      </div>
+      <div class="sport-reseaux" style="margin-top:0.7rem;font-size:0.78rem;display:flex;flex-wrap:wrap;gap:0.6rem;">
+        <a href="https://thaitopteam.wordpress.com/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">🌐 Site web</a>
+        <a href="https://www.facebook.com/thaitopteamCSPSE" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">📘 Facebook</a>
+      </div>
+      <span class="sport-tag">Arts martiaux</span>
+    </div>
+
+    <div class="sport-card reveal">
+      <span class="sport-picto">⛵</span>
+      <div class="sport-nom">Voile</div>
+      <a href="mailto:cspsevoile@laposte.net?subject=Renseignement%20section%20Voile%20-%20CSPSE" style="display:inline-block;margin-top:1.2rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--rouge);padding:0.45rem 1rem;border-radius:2px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">✉ Contacter la section</a>
+      <div class="sport-adresse">📍 Bassin de la Villette / Sorties en mer</div>
+      <div class="sport-horaires">Calendrier saisonnier · Contacter la section pour les dates</div>
+      <div class="sport-equipe">
+        <div class="sport-equipe-resp">👤 Sylvie Berton (Présidente)</div>
+      </div>
+      <div class="sport-tarifs" style="margin-top:0.8rem;font-size:0.78rem;color:var(--gris-clair);line-height:1.6;">
+        💰 <strong style="color:var(--blanc);">Tarifs annuels</strong><br>
+        SNCF ayants-droits : <span style="color:var(--accent);">5 €</span><br>
+        SNCF adultes : <span style="color:var(--accent);">23 €</span>
+      </div>
+
+      <span class="sport-tag">Nautique</span>
+    </div>
+
+    <div class="sport-card reveal">
+      <span class="sport-picto">🧘‍♀️</span>
+      <div class="sport-nom">Yoga</div>
+      
+      <div class="sport-video-label">▶ Vidéo de présentation</div>
+      <div class="sport-video">
+        <iframe src="https://www.youtube.com/embed/wKtJVaspzyc" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a href="mailto:sietch82.jcb@gmail.com?subject=Renseignement%20section%20Yoga%20-%20CSPSE" style="display:inline-block;margin-top:1.2rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--rouge);padding:0.45rem 1rem;border-radius:2px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">✉ Contacter la section</a>
+      <div class="sport-adresse">📍 Dojo SNCF Traversière · 17 rue Traversière, Paris 12e</div>
+      <div class="sport-horaires">Mar 12h00–13h00 (Dynamique) · 13h10–14h00 (Détente) · 1er mardi du mois : Yoga Nidra</div>
+      <div class="sport-equipe">
+        <div class="sport-equipe-resp">👤 Laurent Demouy (Président)</div>
+        <div class="sport-equipe-profs">🥋 <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeyoganindrabranche.jpg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Jean-Claude Branche</a></div>
+      </div>
+      <div class="sport-tarifs" style="margin-top:0.8rem;font-size:0.78rem;color:var(--gris-clair);line-height:1.6;">
+        💰 <strong style="color:var(--blanc);">Tarifs annuels</strong><br>
+        Adulte : <span style="color:var(--accent);">180 €</span> · SNCF : <span style="color:var(--accent);">90 €</span>
+      </div>
+      <span class="sport-tag">Bien-être</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ INFOS / HISTOIRE ═══════════ -->
+<section id="infos">
+  <div class="infos-grid">
+    <div>
+      <p class="section-eyebrow reveal">Qui sommes-nous</p>
+      <h2 class="section-titre reveal">Le Club</h2>
+      <div class="infos-texte reveal">
+        <p>Le <strong>CSPSE – Cheminots Sportifs Paris-Sud-Est</strong> est une association sportive multidisciplinaire dans le <strong>12e arrondissement de Paris</strong>, rattachée au <strong>CASI-PSE-SNCF</strong>.</p>
+        <p>Issu du monde cheminot, le club est aujourd'hui ouvert à <strong>tous les publics</strong> : familles, adultes, enfants, débutants et sportifs confirmés, tous sont les bienvenus.</p>
+        <p>Nous proposons <strong>8 disciplines</strong> encadrées par des enseignants qualifiés et passionnés, dans des salles partenaires situées à proximité de la Gare de Lyon et de la Gare de Bercy.</p>
+        <div class="encart">
+          <p><strong>🏅 Affiliations</strong><br>Le club est affilié à plusieurs fédérations nationales (FFJDA, FFKAMA, etc.). Les licences incluent l'assurance pour l'entraînement et les compétitions.</p>
+        </div>
+        <div class="encart" style="margin-top:1rem;border-left-color:var(--accent);">
+          <p><strong>🚂 Tarif cheminot</strong><br>En tant que club cheminot rattaché au CASI-PSE-SNCF, le CSPSE propose un <strong>tarif préférentiel pour les agents SNCF et leurs familles</strong>. Contactez directement la section souhaitée pour en bénéficier.</p>
+        </div>
+
+        <div style="margin-top:2.5rem;">
+          <p class="section-eyebrow" style="margin-bottom:0.75rem;">Notre histoire</p>
+          <div class="infos-texte">
+            <p>Le CSPSE est né dans le monde cheminot du <strong>12e arrondissement de Paris</strong>, ancré autour des sites historiques de la rue de Bercy, du dojo de la rue Traversière et de la salle du 320bis rue de Charenton.</p>
+            <p>Dès <strong>1994</strong>, le club fédère entre <strong>700 et 800 adhérents</strong> autour de dix sections sportives : Judo, Karaté, Athlétisme, Escrime, Gym, Football, Kempo-Boxing, Ski, Boules et Culture Physique. Au fil des années, de nouvelles sections voient le jour : <strong>Aïkido, Voile et Yoga</strong> sont officialisées en 1998, la <strong>Boxe Thaï</strong> (devenue Muaythaï) naît en 2004, et le <strong>Tai-Chi</strong> rejoint la Gym en 2007.</p>
+            <p>Le club a été dirigé par une succession de présidents bénévoles engagés : Guy Choiselat, Gilles Goutagneux, Jean-Pierre Roosens, Yves Degas et Philippe Fenollar. Fabrice Chamerois, secrétaire général de 2004 à 2010, est président du CSPSE depuis 2013. Jean Héritier, figure historique de la section Judo, assure les fonctions de trésorier du club depuis 2004.</p>
+            <p>Sur le plan sportif, le CSPSE compte de nombreux titres : <strong>Champion de France de Judo</strong> (1994), <strong>vice-championne du Monde de Karaté</strong> (-61kg, 2009), <strong>Champion d'Europe et Champion du Monde Amateur de Muaythaï</strong> (2009). La section Voile organise régulièrement des régates et croisières en Bretagne, Corse, Croatie, Polynésie et aux Antilles.</p>
+            <p>Aujourd'hui, le CSPSE poursuit sa mission : offrir la pratique sportive à <strong>tous les agents SNCF, leurs familles et le grand public</strong>, avec un tarif préférentiel pour les cheminots, dans un esprit de convivialité et de performance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="section-eyebrow">Diplômes & récompenses</p>
+      <h3 style="font-family:var(--font-titre);font-size:2.2rem;color:var(--blanc);margin-bottom:1.5rem;letter-spacing:0.05em;">Nos champions</h3>
+      <p style="color:var(--gris-clair);font-size:0.95rem;line-height:1.8;margin-bottom:1.5rem;">Nos adhérents participent régulièrement à des compétitions locales, régionales et nationales. Le club est fier de ses nombreux podiums obtenus au fil des années.</p>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        <div style="background:var(--gris-fonce);padding:1rem 1.5rem;border-left:3px solid var(--accent);display:flex;gap:1rem;align-items:center;">
+          <span style="font-size:1.5rem;">🥇</span>
+          <div>
+            <div style="font-size:0.85rem;font-weight:600;color:var(--blanc);">Compétitions de Judo & Jiu-Jitsu</div>
+            <div style="font-size:0.78rem;color:var(--gris-clair);">Championnats régionaux Île-de-France</div>
+          </div>
+        </div>
+        <div style="background:var(--gris-fonce);padding:1rem 1.5rem;border-left:3px solid var(--accent);display:flex;gap:1rem;align-items:center;">
+          <span style="font-size:1.5rem;">🥊</span>
+          <div>
+            <div style="font-size:0.85rem;font-weight:600;color:var(--blanc);">Gala de Muaythaï</div>
+            <div style="font-size:0.78rem;color:var(--gris-clair);">Plusieurs titres en combat</div>
+          </div>
+        </div>
+        <div style="background:var(--gris-fonce);padding:1rem 1.5rem;border-left:3px solid var(--accent);display:flex;gap:1rem;align-items:center;">
+          <span style="font-size:1.5rem;">⛵</span>
+          <div>
+            <div style="font-size:0.85rem;font-weight:600;color:var(--blanc);">Régate Voile CASIPSE</div>
+            <div style="font-size:0.78rem;color:var(--gris-clair);">Podiums réguliers en compétition nautique</div>
+          </div>
+        </div>
+        <div style="background:var(--gris-fonce);padding:1rem 1.5rem;border-left:3px solid var(--accent);display:flex;gap:1rem;align-items:center;">
+          <span style="font-size:1.5rem;">🥋</span>
+          <div>
+            <div style="font-size:0.85rem;font-weight:600;color:var(--blanc);">Championnats de Karaté</div>
+            <div style="font-size:0.78rem;color:var(--gris-clair);">Résultats en compétition régionale et nationale</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ LIEUX ═══════════ -->
+<section id="lieux">
+  <p class="section-eyebrow reveal">Où pratiquer</p>
+  <h2 class="section-titre reveal">Nos salles</h2>
+  <div class="lieux-cards">
+
+    <div class="lieu-card reveal" style="grid-column: 1 / -1;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;flex-wrap:wrap;">
+
+        <!-- TRAVERSIÈRE -->
+        <div>
+          <div class="lieu-nom">Dojo SNCF Traversière</div>
+          <div class="lieu-adresse">17 rue Traversière · 75012 Paris<br>Métro : Gare de Lyon / Quai de la Rapée</div>
+          <div class="lieu-sports" style="margin-bottom:1rem;">MMA-JJB · Karaté · Yoga · Gym / Taï-Chi</div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.626381512415!2d2.3690821153789097!3d48.846264879286295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6720350363d1d%3A0xc2f89b0c24874e92!2s17%20Rue%20Traversi%C3%A8re%2C%2075012%20Paris!5e0!3m2!1sfr!2sfr!4v1539956554546"
+            width="100%" height="220" style="border:0;border-radius:2px;margin-bottom:0.75rem;" allowfullscreen="" loading="lazy">
+          </iframe>
+          <a href="https://momento360.com/e/u/e8a6d4b0a94a458a8122815d0309fbb5?utm_campaign=embed&utm_source=other&heading=9.24&pitch=-11.92&field-of-view=75&size=medium"
+             target="_blank" rel="noopener"
+             style="display:inline-block;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:0.4rem 0.9rem;border-radius:2px;text-decoration:none;font-weight:600;">
+            🔭 Visite 3D du dojo
+          </a>
+        </div>
+
+        <!-- CHARENTON -->
+        <div>
+          <div class="lieu-nom">Dojo SNCF Charenton</div>
+          <div class="lieu-adresse">320 bis rue de Charenton · 75012 Paris<br>Métro : Michel Bizot / Porte de Charenton</div>
+          <div class="lieu-sports" style="margin-bottom:1rem;">Muaythaï · Aïkido · Judo / Ju-Jitsu</div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.3701297082976!2d2.3931506516240644!3d48.83207828020388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x61a9237c5f451b15!2sAikido%20Clubs%20Cheminots!5e0!3m2!1sfr!2sfr!4v1539956638537"
+            width="100%" height="220" style="border:0;border-radius:2px;margin-bottom:0.75rem;" allowfullscreen="" loading="lazy">
+          </iframe>
+          <a href="https://momento360.com/e/u/6828cd4f702b4244b424da493407fbb9?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
+             target="_blank" rel="noopener"
+             style="display:inline-block;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:0.4rem 0.9rem;border-radius:2px;text-decoration:none;font-weight:600;">
+            🔭 Visite 3D du dojo
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lieu-card reveal">
+      <div class="lieu-nom">Voile — Base nautique</div>
+      <div class="lieu-adresse">Lieu de pratique variable<br>selon le calendrier saisonnier<br>(sorties en mer & plans d'eau)</div>
+      <div class="lieu-sports">Voile</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ AGENDA TRAVERSIÈRE ═══════════ -->
+<section id="agenda">
+  <p class="section-eyebrow reveal">Disponibilités</p>
+  <h2 class="section-titre reveal">Agenda — Dojo Traversière</h2>
+  <div class="reveal" style="border-radius:2px;overflow:hidden;max-width:800px;">
+    <iframe src="https://calendar.google.com/calendar/embed?src=707044741eef261512a36018fabd71895de7da1a4cb1676e061fe05817fc62ff%40group.calendar.google.com&ctz=Europe%2FParis" style="border:0;width:100%;height:600px;display:block;" frameborder="0" scrolling="no"></iframe>
+  </div>
+</section>
+
+<!-- ═══════════ AGENDA CHARENTON ═══════════ -->
+<section id="agenda-charenton">
+  <p class="section-eyebrow reveal">Disponibilités</p>
+  <h2 class="section-titre reveal">Agenda — Dojo Charenton</h2>
+  <div class="reveal" style="border-radius:2px;overflow:hidden;max-width:800px;">
+    <iframe src="https://calendar.google.com/calendar/embed?src=49306999591ea670fa9f38cdaac8933415b5432006c482e5077ede62ab67017f%40group.calendar.google.com&ctz=Europe%2FParis" style="border:0;width:100%;height:600px;display:block;" frameborder="0" scrolling="no"></iframe>
+  </div>
+</section>
+
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <p class="section-eyebrow reveal">Nous contacter</p>
+      <h2 class="section-titre reveal">Rejoignez-nous</h2>
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <span class="contact-icone">📞</span>
+          <div class="contact-detail">
+            <h4>Téléphone</h4>
+            <a href="tel:+33607991279">06 07 99 12 19</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icone">✉️</span>
+          <div class="contact-detail">
+            <h4>E-mail</h4>
+            <a href="mailto:cspse75@gmail.com">cspse75@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icone">📍</span>
+          <div class="contact-detail">
+            <h4>Adresses principales</h4>
+            <p>17 rue Traversière, 75012 Paris<br>320bis rue de Charenton, 75012 Paris</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icone">🔗</span>
+          <div class="contact-detail">
+            <h4>Extranet CASIPSE</h4>
+            <a href="https://www.casipse.com/Extranet/" target="_blank" rel="noopener">www.casipse.com/Extranet/</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <h3 style="font-family:var(--font-titre);font-size:1.8rem;color:var(--blanc);margin-bottom:1.5rem;letter-spacing:0.05em;">Demande d'information</h3>
+
+      <div id="form-succes" style="display:none;background:var(--gris-fonce);border-left:4px solid #4CAF50;padding:1.5rem 2rem;border-radius:2px;">
+        <p style="color:#4CAF50;font-weight:600;font-size:1rem;margin-bottom:0.4rem;">&#x2705; Message envoyé !</p>
+        <p style="color:var(--gris-clair);font-size:0.9rem;" id="form-succes-detail"></p>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Jean" required>
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" placeholder="jean.dupont@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="telephone">Téléphone</label>
+          <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00">
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" rows="4" placeholder="Votre message, questions sur les horaires, tarifs..." required></textarea>
+        </div>
+        <div id="form-erreur" style="display:none;color:#ff6b6b;font-size:0.85rem;padding:0.5rem 0;"></div>
+        <button type="submit" class="btn-primaire" id="btn-envoyer" style="width:100%;padding:1rem;">Envoyer le message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<div class="divider"></div>
+
+<!-- ═══════════ DIPLÔMES ═══════════ -->
+<section id="diplomes">
+  <p class="section-eyebrow reveal">Qualifications</p>
+  <h2 class="section-titre reveal">Diplômes des enseignants</h2>
+  <p style="color:var(--gris-clair);font-size:0.95rem;margin-bottom:2.5rem;max-width:600px;">
+    Les enseignants du CSPSE sont tous titulaires de diplômes d'État ou fédéraux reconnus par le Ministère des Sports.
+  </p>
+  <div class="diplomes-grid">
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/dejeps_aikido_cassrdbruno.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/dejeps_aikido_cassrdbruno.jpg" alt="DEJEPS Aïkido — Bruno Cassard" loading="lazy">
+            <div class="diplome-label">DEJEPS Aïkido — Bruno Cassard</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/dejeps_aikido_reushlepatrice.png" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/dejeps_aikido_reushlepatrice.png" alt="DEJEPS Aïkido — Patrice Reuschlé" loading="lazy">
+            <div class="diplome-label">DEJEPS Aïkido — Patrice Reuschlé</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/carteeducateursportiffabcham.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/carteeducateursportiffabcham.jpg" alt="Carte Éducateur Sportif — Fabrice Chamerois" loading="lazy">
+            <div class="diplome-label">Carte Éducateur Sportif — Fabrice Chamerois</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/dejeps-jeanheritier-judo.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/dejeps-jeanheritier-judo.jpg" alt="DEJEPS Judo — Jean Héritier" loading="lazy">
+            <div class="diplome-label">DEJEPS Judo — Jean Héritier</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/bees1-jeanheritier-judo.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/bees1-jeanheritier-judo.jpg" alt="BEES1 Judo — Jean Héritier" loading="lazy">
+            <div class="diplome-label">BEES1 Judo — Jean Héritier</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/wp-1539979504007.jpeg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/wp-1539979504007.jpeg" alt="DIF — Antonio Correia" loading="lazy">
+            <div class="diplome-label">DIF — Antonio Correia</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/wp-1539979503905.jpeg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/wp-1539979503905.jpeg" alt="DIF — Florent Correia" loading="lazy">
+            <div class="diplome-label">DIF — Florent Correia</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/wp-1539979503750.jpeg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/wp-1539979503750.jpeg" alt="DIF — Florent Correia" loading="lazy">
+            <div class="diplome-label">DIF — Florent Correia</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeyoganindrabranche.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeyoganindrabranche.jpg" alt="Diplôme Yoga — Nindra Branche" loading="lazy">
+            <div class="diplome-label">Diplôme Yoga — Nindra Branche</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeyogagayabranche.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeyogagayabranche.jpg" alt="Diplôme Yoga — Gaya Branche" loading="lazy">
+            <div class="diplome-label">Diplôme Yoga — Gaya Branche</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomekaratebees1thierryvermont.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomekaratebees1thierryvermont.jpg" alt="BEES1 Karaté — Thierry Vermont" loading="lazy">
+            <div class="diplome-label">BEES1 Karaté — Thierry Vermont</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomekaratedif_davidlauret.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomekaratedif_davidlauret.jpg" alt="DIF Karaté — David Lauret" loading="lazy">
+            <div class="diplome-label">DIF Karaté — David Lauret</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomekaratedif_hamid.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomekaratedif_hamid.jpg" alt="DIF Karaté — Adbelhamid Khodja" loading="lazy">
+            <div class="diplome-label">DIF Karaté — Adbelhamid Khodja</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomegymprofesseurlefrancois.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomegymprofesseurlefrancois.jpg" alt="Diplôme Gym — Marie-Claude Lefrançois" loading="lazy">
+            <div class="diplome-label">Diplôme Gym — Marie-Claude Lefrançois</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomegymprofesseurguilleux.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomegymprofesseurguilleux.jpg" alt="Diplôme Gym — Alain Guilleux" loading="lazy">
+            <div class="diplome-label">Diplôme Gym — Alain Guilleux</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeescrimepautrasphilippe.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeescrimepautrasphilippe.jpg" alt="Diplôme Escrime — Philippe Pautras" loading="lazy">
+            <div class="diplome-label">Diplôme Escrime — Philippe Pautras</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomedejeps_judo_fabricechamerois.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomedejeps_judo_fabricechamerois.jpg" alt="DEJEPS Judo — Fabrice Chamerois" loading="lazy">
+            <div class="diplome-label">DEJEPS Judo — Fabrice Chamerois</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeescrimedif_dephilippis.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeescrimedif_dephilippis.jpg" alt="DIF Escrime — Marco De Philippis" loading="lazy">
+            <div class="diplome-label">DIF Escrime — Marco De Philippis</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeescrimeherbertsebastien.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomeescrimeherbertsebastien.jpg" alt="Diplôme Escrime — Sébastien Herbert" loading="lazy">
+            <div class="diplome-label">Diplôme Escrime — Sébastien Herbert</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomebees1_kravmagachristophephilippe.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomebees1_kravmagachristophephilippe.jpg" alt="BEES1 Krav Maga — Christophe Philippe" loading="lazy">
+            <div class="diplome-label">BEES1 Krav Maga — Christophe Philippe</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomebpjeps_pugi_muaythai_fabricechamerois.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomebpjeps_pugi_muaythai_fabricechamerois.jpg" alt="BPJEPS Muaythaï — Fabrice Chamerois" loading="lazy">
+            <div class="diplome-label">BPJEPS Muaythaï — Fabrice Chamerois</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomebees1judochameroisfabrice.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/diplomebees1judochameroisfabrice.jpg" alt="BEES1 Judo — Fabrice Chamerois" loading="lazy">
+            <div class="diplome-label">BEES1 Judo — Fabrice Chamerois</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/bmf2-muay-thai-denis-stutzinger.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/bmf2-muay-thai-denis-stutzinger.jpg" alt="BMF2 Muaythaï — Denis Stutzinger" loading="lazy">
+            <div class="diplome-label">BMF2 Muaythaï — Denis Stutzinger</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/de-perfectionnement-sportif-denis-stutzinger.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2018/10/de-perfectionnement-sportif-denis-stutzinger.jpg" alt="DE Perfectionnement Sportif — Denis Stutzinger" loading="lazy">
+            <div class="diplome-label">DE Perfectionnement Sportif — Denis Stutzinger</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2019/11/wp-1574825240693.jpeg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2019/11/wp-1574825240693.jpeg" alt="DIF — Gilles Arsène" loading="lazy">
+            <div class="diplome-label">DIF — Gilles Arsène</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2019/11/wp-1574825218993.jpeg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2019/11/wp-1574825218993.jpeg" alt="Docteur en Médecine — Laurent Belahssen" loading="lazy">
+            <div class="diplome-label">Docteur en Médecine — Laurent Belahssen</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2019/11/wp-1574825186682.jpeg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2019/11/wp-1574825186682.jpeg" alt="BMF — Denis Stutzinger" loading="lazy">
+            <div class="diplome-label">BMF — Denis Stutzinger</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2025/11/animateur-jjb-ffjda-chamerois-fabrice.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2025/11/animateur-jjb-ffjda-chamerois-fabrice.jpg" alt="Animateur JJB FFJDA — Fabrice Chamerois" loading="lazy">
+            <div class="diplome-label">Animateur JJB FFJDA — Fabrice Chamerois</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2023/07/diplome-bees1-yves-degas-karate-page-001.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2023/07/diplome-bees1-yves-degas-karate-page-001.jpg" alt="BEES1 Karaté — Yves Degas" loading="lazy">
+            <div class="diplome-label">BEES1 Karaté — Yves Degas</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2023/07/diplome-dejeps-yves-degas-karate-page-001.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2023/07/diplome-dejeps-yves-degas-karate-page-001.jpg" alt="DEJEPS Karaté — Yves Degas" loading="lazy">
+            <div class="diplome-label">DEJEPS Karaté — Yves Degas</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2023/12/diplome-federal-boxe-anglaise-kautzmann-jm.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2023/12/diplome-federal-boxe-anglaise-kautzmann-jm.jpg" alt="Diplôme Fédéral Boxe Anglaise — J-M Kautzmann" loading="lazy">
+            <div class="diplome-label">Diplôme Fédéral Boxe Anglaise — J-M Kautzmann</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2023/12/cfebjjb-mathias-duventru.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2023/12/cfebjjb-mathias-duventru.jpg" alt="CFEB JJB — Mathias Duventru" loading="lazy">
+            <div class="diplome-label">CFEB JJB — Mathias Duventru</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2023/12/cfebjjb-fabrice-chamerois.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2023/12/cfebjjb-fabrice-chamerois.jpg" alt="CFEB JJB — Fabrice Chamerois" loading="lazy">
+            <div class="diplome-label">CFEB JJB — Fabrice Chamerois</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/07/baf-eric-conxicoeur.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2026/07/baf-eric-conxicoeur.jpg" alt="BAF — Éric Conxicoeur" loading="lazy">
+            <div class="diplome-label">BAF — Éric Conxicoeur</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/07/bmf2-contact-defense-eric-conxicoeur.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2026/07/bmf2-contact-defense-eric-conxicoeur.jpg" alt="BMF2 Contact Défense — Éric Conxicoeur" loading="lazy">
+            <div class="diplome-label">BMF2 Contact Défense — Éric Conxicoeur</div>
+          </a>
+        </div>
+        <div class="diplome-card">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/07/bmf-2-pancrace-eric-conxicoeur.jpg" target="_blank" rel="noopener">
+            <img src="https://cspse.wordpress.com/wp-content/uploads/2026/07/bmf-2-pancrace-eric-conxicoeur.jpg" alt="BMF2 Pancrace — Éric Conxicoeur" loading="lazy">
+            <div class="diplome-label">BMF2 Pancrace — Éric Conxicoeur</div>
+          </a>
+        </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ MODALE GESTION ═══════════ -->
+<div id="modal-gestion">
+  <div class="gestion-box">
+    <button class="gestion-fermer" onclick="fermerGestion()">×</button>
+
+    <!-- Écran mot de passe -->
+    <div id="ecran-mdp">
+      <h2>🔒 Zone Gestion</h2>
+      <p>Accès réservé aux membres du bureau CSPSE</p>
+      <input type="password" id="champ-mdp" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')verifierMdp()">
+      <br>
+      <button class="btn-primaire" onclick="verifierMdp()" style="margin-top:1rem;padding:0.8rem 2rem;">Accéder</button>
+      <p id="msg-erreur">Mot de passe incorrect.</p>
+    </div>
+
+    <!-- Contenu protégé -->
+    <div id="ecran-contenu">
+      <div class="gestion-titre">Gestion du club</div>
+      <p class="gestion-sous">Espace réservé aux membres du bureau — Saison 2024-2025</p>
+
+      <!-- Rapports d'activité par section -->
+      <div class="gestion-rubrique">
+        <h3>📋 Rapports d'activité des sections</h3>
+        <p style="color:var(--gris-clair);font-size:0.82rem;margin-bottom:1rem;">Cliquez sur une section pour accéder à son rapport Google Sheets</p>
+        <div class="sections-grid">
+          <a href="https://docs.google.com/spreadsheets/d/1KgxxPdFck9KAuWOXHEzMRLSi1kf3V18Z6vZ69FEJS6Y/edit?usp=drive_link" target="_blank" class="section-btn"><span>🥋</span>Aïkido</a>
+          <a href="https://docs.google.com/spreadsheets/d/1C6GeMnAwOLnInTDk-rj9dq-Msxf5dKrFud_j6C3UDOY/edit?usp=drive_link" target="_blank" class="section-btn"><span>🧘</span>Gym / Taï-Chi</a>
+          <a href="https://docs.google.com/spreadsheets/d/1_PjDfl__44t8E2waJaXK3rWM2j9KZj9ff7mZ08oS7ec/edit?usp=drive_link" target="_blank" class="section-btn"><span>🥋</span>Judo / Ju-Jitsu</a>
+          <a href="https://docs.google.com/spreadsheets/d/1c16SqRqd6j_7efHE6TMqthXMcAHzzOpA5PCy1njlr6k/edit?usp=drive_link" target="_blank" class="section-btn"><span>🥋</span>Karaté</a>
+          <a href="https://docs.google.com/spreadsheets/d/1bjOKOXle8jC5ICqs6LAXWjKx0rwPfGTf3u7htBfX7Tw/edit?usp=drive_link" target="_blank" class="section-btn"><span>🤼</span>MMA-JJB</a>
+          <a href="https://docs.google.com/spreadsheets/d/1icBmPPod9KxpdWW2o_K0iqyAw0G3OPHP1dxL4gsXg_w/edit?usp=drive_link" target="_blank" class="section-btn"><span>🥊</span>Muaythaï</a>
+          <a href="https://docs.google.com/spreadsheets/d/1qbnGzGkDHo6STKBdWl2nsEQab4fasWsaxdIVMQNBkl8/edit?usp=drive_link" target="_blank" class="section-btn"><span>⛵</span>Voile</a>
+          <a href="https://docs.google.com/spreadsheets/d/1QGqya0IxWsIIzdN5Ivm_P5dnpOuzPK_IJ1B2qNt8isc/edit?usp=drive_link" target="_blank" class="section-btn"><span>🧘‍♀️</span>Yoga</a>
+        </div>
+      </div>
+
+      <!-- Rapports d'activité -->
+      <div class="gestion-rubrique">
+        <h3>📊 Rapports d'activité du club</h3>
+        <div class="docs-liens" style="flex-direction:column;gap:0.6rem;">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscf-bilan0809.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2008-2009</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscf_bilan-cspse_0910.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2009-2010</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscf-bilan1011.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2010-2011</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscf-bilan1112.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2011-2012</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscfbilancspse_2012_2013.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2012-2013</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscfbilancspse_2013_2014.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2013-2014</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscfbilancspse_2014_2015.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2014-2015</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscfbilancspse_2015_2016.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2015-2016</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2020/09/uscfbilancspse_2016_2017.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2016-2017</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2020/10/uscfbilancspse_2019_2020.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2019-2020</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2024/07/uscfbilancspse_2020_2021.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2020-2021</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2024/07/uscfbilancspse_2021_2022.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2021-2022</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2024/07/uscfbilancspse_2022_2023.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2022-2023</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/uscfbilancspse_2023_2024.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2023-2024</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/uscfbilancspse_2024_2025.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📊</span>
+            <div>
+              <div>Saison 2024-2025</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Rapport d'activité USCF</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- PV d'AG -->
+      <div class="gestion-rubrique">
+        <h3>📝 Procès-verbaux d'Assemblées Générales</h3>
+        <div class="docs-liens" style="flex-direction:column;gap:0.6rem;">
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_ag130194.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 26 janvier 1994</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_ag310194.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 31 janvier 1994</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_ag260195.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 26 janvier 1995</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_ag-260196r.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 26 janvier 1996</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/agex281098.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 28 octobre 1998</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag150699.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 15 juin 1999</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag020299.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 2 février 1999</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag301104.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 30 novembre 2004</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag070604.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 7 juin 2004</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_ag_extra200906.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 20 septembre 2006</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag280606.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 28 juin 2006</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag_190907.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 19 septembre 2007</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag_281009.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 28 octobre 2009</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/ag_300910.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 30 septembre 2010</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvag180412.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 18 avril 2012</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvag280213_complet.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 28 février 2013</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvag210313.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 21 mars 2013</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvag110214.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 11 février 2014</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvag170615.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 17 juin 2015</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pvagextra110516.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 11 mai 2016</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/cragextra240517.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 24 mai 2017</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/cragextra160918.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 16 septembre 2018</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_agextra270619.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 27 juin 2019</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_agextra261119.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 26 novembre 2019</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+          <a href="https://cspse.wordpress.com/wp-content/uploads/2026/06/pv_agextra160323.pdf" target="_blank" rel="noopener" class="doc-btn">
+            <span class="doc-icone">📝</span>
+            <div>
+              <div>AG du 16 mars 2023</div>
+              <div style="font-size:0.72rem;color:var(--gris-clair);font-weight:400;">Procès-verbal</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">CS<span>P</span>SE</div>
+  <p class="footer-copy">© 2026 Cheminots Sportifs Paris-Sud-Est · Association loi 1901</p>
+  <ul class="footer-links">
+    <li><a href="#sections">Sports</a></li>
+    <li><a href="#infos">Le club</a></li>
+    <li><a href="#diplomes">Diplômes</a></li>
+    <li><a href="https://clinquant-fairy-eb731f.netlify.app/" target="_blank" style="color:var(--accent);">💬 Aide</a></li>
+    <li><a href="gestion.html" style="color:var(--rouge);">🔒 Gestion</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  // ─── Formulaire → mailto cspse75@gmail.com ──────────────────────
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const prenom  = document.getElementById('prenom').value.trim();
+    const nom     = document.getElementById('nom').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const tel     = document.getElementById('telephone').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const errDiv  = document.getElementById('form-erreur');
+    errDiv.style.display = 'none';
+    if (!prenom || !nom || !email || !message) {
+      errDiv.textContent = '⚠️ Merci de remplir tous les champs obligatoires (*).';
+      errDiv.style.display = 'block';
+      return;
+    }
+    const sujet = encodeURIComponent('Demande de renseignement – CSPSE');
+    const corps = encodeURIComponent(
+      'Bonjour,
+
+' +
+      'Nom : ' + prenom + ' ' + nom + '
+' +
+      'Email : ' + email + '
+' +
+      'Téléphone : ' + (tel || 'Non renseigné') + '
+
+' +
+      'Message :
+' + message
+    );
+    window.location.href = 'mailto:cspse75@gmail.com?subject=' + sujet + '&body=' + corps;
+  });
+
+  // ─── Hamburger menu ─────────────────────────────────────────────
+  // Hamburger menu — version robuste mobile
+  const ham = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (ham && navLinks) {
+    ham.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      navLinks.classList.toggle('open');
+    });
+    // Fermer le menu quand on clique sur un lien
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('open');
+      });
+    });
+    // Fermer si on clique ailleurs
+    document.addEventListener('click', function(e) {
+      if (!ham.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('open');
+      }
+    });
+  }
+
+
+
+  // ─── Nav highlight on scroll ────────────────────────────────────
+  const pageSections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let curr = '';
+    pageSections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) curr = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + curr ? 'var(--rouge)' : '';
+    });
+  });
+
+  // ─── Zone Gestion protégée ──────────────────────────────────────
+  function ouvrirGestion() {
+    document.getElementById('modal-gestion').classList.add('actif');
+    document.getElementById('champ-mdp').focus();
+    document.body.style.overflow = 'hidden';
+  }
+  function fermerGestion() {
+    document.getElementById('modal-gestion').classList.remove('actif');
+    document.getElementById('ecran-mdp').style.display = 'block';
+    document.getElementById('ecran-contenu').style.display = 'none';
+    document.getElementById('champ-mdp').value = '';
+    document.getElementById('msg-erreur').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  function verifierMdp() {
+    const mdp = document.getElementById('champ-mdp').value;
+    if (mdp === 'cspse75012') {
+      document.getElementById('ecran-mdp').style.display = 'none';
+      document.getElementById('ecran-contenu').style.display = 'block';
+    } else {
+      document.getElementById('msg-erreur').style.display = 'block';
+      document.getElementById('champ-mdp').value = '';
+      document.getElementById('champ-mdp').focus();
+    }
+  }
+  // Fermer avec Échap
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') fermerGestion();
+  });
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('SW enregistré:', reg.scope))
+        .catch(err => console.log('SW erreur:', err));
+    });
+  }
+</script>
+</body>
+</html>
