@@ -64,7 +64,7 @@ Sections disparues ou mises en sommeil
 •	Voile : section en déshérence depuis plusieurs saisons ; chèques de subvention non réclamés, dernière activité sportive documentée vers 2017
 •	MMA : en sommeil lors des travaux du dojo Traversière (2016-2017), reprise ultérieure avec un nouvel enseignant
 Sections actives en 2022-2023
-Aïkido, Boxe Thaï (Muaythaï), Gymnastique/Taï-chi, Judo/Ju-jitsu, Karaté, MMA, Yoga
+Aïkido, Boxe Thaï (Muaythaï), Gymnastique/Taï-chi, Judo/Ju-jitsu, Karaté, MMA, Yoga.
 3. Gouvernance et présidents successifs
 
 Période	Président	Notes
