@@ -33,6 +33,13 @@ Site web : https://cspse.wordpress.com
 - Secrétaire Général : Jean-Philippe LEROUX
 - Commissaires aux Comptes : Jean-Philippe LEROUX & Jean-Pierre JOUSSANT
 
+=== HISTORIQUE DU CSPSE ===
+Le CSPSE est né dans le monde cheminot du 12e arrondissement de Paris, ancré autour des sites historiques de la rue de Bercy, du dojo de la rue Traversière et de la salle du 320bis rue de Charenton.
+Dès 1994, le club fédère entre 700 et 800 adhérents autour de dix sections sportives : Judo, Karaté, Athlétisme, Escrime, Gym, Football, Kempo-Boxing, Ski, Boules et Culture Physique. Au fil des années, de nouvelles sections voient le jour : Aïkido, Voile et Yoga sont officialisées en 1998, la Boxe Thaï (devenue Muaythaï) naît en 2004, et le Tai-Chi rejoint la Gym en 2007.
+Le club a été dirigé par une succession de présidents bénévoles engagés : Guy Choiselat, Gilles Goutagneux, Jean-Pierre Roosens, Yves Degas et Philippe Fenollar. Fabrice Chamerois, secrétaire général de 2004 à 2010, est président du CSPSE depuis 2013. Jean Héritier, figure historique de la section Judo, assure les fonctions de trésorier du club depuis 2004.
+Sur le plan sportif, le CSPSE compte de nombreux titres : Champion de France de Judo (1994), vice-championne du Monde de Karaté (-61kg, 2009), Champion d'Europe et Champion du Monde Amateur de Muaythaï (2009). La section Voile organise régulièrement des régates et croisières en Bretagne, Corse, Croatie, Polynésie et aux Antilles.
+Aujourd'hui, le CSPSE poursuit sa mission : offrir la pratique sportive à tous les agents SNCF, leurs familles et le grand public, avec un tarif préférentiel pour les cheminots, dans un esprit de convivialité et de performance.
+
 === SECTIONS SPORTIVES ===
 
 **1. AÏKIDO**
@@ -98,7 +105,7 @@ Site web : https://cspse.wordpress.com
 === INSCRIPTIONS ===
 Pour s'inscrire ou obtenir les tarifs, contacter directement le responsable de la section par téléphone ou email.
 Contact bureau : cspse75@gmail.com / 06 07 99 12 79.
-Un certificat médical de non contre-indication à la pratique sportive est requis.
+Un certificat médical de non contre-indication à la pratique sportive choisie est requis.
 
 === STATIONNEMENT ===
 
