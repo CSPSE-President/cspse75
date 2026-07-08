@@ -38,7 +38,7 @@ Site web : https://cspse.wordpress.com
 **1. AÏKIDO**
 - Salle : 320bis rue de Charenton, 75012 Paris
 - Horaires : Mardi & mercredi 20h30–22h00 / Vendredi 18h30–20h30
-- Enseignant : Patrice REUSCHLÉ, William Joseph
+- Enseignant : Patrice REUSCHLÉ, William JOSEPH
 - Contact : 06 82 75 58 38 / jean.philippe.leroux75@gmail.com
 - Pour les tarifs, contacter la section directement.
 
