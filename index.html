@@ -2026,7 +2026,7 @@
   function cSendSugg(btn) { cHideSugg(); cSendMsg(btn.textContent.trim()); }
   function cHideSugg() { if (!cSuggHidden) { cSugg.style.display='none'; cSuggHidden=true; } }
 
-  cAppendMsg('bot', "Bonjour et bienvenue au **C.S.P.S.E.** ! 👋\n\n*Cheminots Sportifs de Paris-Sud-Est — « L'Esprit Cheminot dans un Corps Sain »*\n\nJe peux vous renseigner sur nos **8 sections sportives**, les **horaires**, les **lieux de pratique** ou les **inscriptions**.\n\nComment puis-je vous aider ?");
+  cAppendMsg('bot', 'Bonjour et bienvenue au **C.S.P.S.E.** ! \uD83D\uDC4B\n\n*Cheminots Sportifs de Paris-Sud-Est — \u00ab L\u2019Esprit Cheminot dans un Corps Sain \u00bb*\n\nJe peux vous renseigner sur nos **8 sections sportives**, les **horaires**, les **lieux de pratique** ou les **inscriptions**.\n\nComment puis-je vous aider ?');
 
   async function cSendMsg(text) {
     const msg = (text || cInput.value).trim();
