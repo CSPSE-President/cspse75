@@ -71,8 +71,8 @@ Période	Président	Notes
 1994–1995	Guy CHOISELAT	Fondateur de la dynamique associative
 1996–1998	Gilles GOUTAGNEUX	Démission bureau en 1998
 1998–2006	Jean-Pierre ROOSENS	Démission sept. 2006
-2006–2008 Poste vacant (pas de président)
-2009 Yves DEGAS	Démission oct. 2009
+2006–2008 Poste vacant, pas de président
+2009-2009  Yves DEGAS	Démission oct. 2009
 2009–2013	Philippe FENOLLAR	Élu par 8 voix contre 5 ; démissionne en sept. 2012
 2013–2023+	Fabrice CHAMEROIS	Élu à l'unanimité en fév. 2013 ; réélu régulièrement
 
