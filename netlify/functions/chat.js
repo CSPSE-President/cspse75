@@ -38,7 +38,7 @@ Site web : https://cspse.wordpress.com
 **1. AÏKIDO**
 - Salle : 320bis rue de Charenton, 75012 Paris
 - Horaires : Mardi & mercredi 20h30–22h00 / Vendredi 18h30–20h30
-- Enseignant : Patrice REUSCHLÉ (SEPH)
+- Enseignant : Patrice REUSCHLÉ, William Joseph
 - Contact : 06 82 75 58 38 / jean.philippe.leroux75@gmail.com
 - Pour les tarifs, contacter la section directement.
 
@@ -77,7 +77,7 @@ Site web : https://cspse.wordpress.com
 **6. MUAYTHAÏ (Boxe Thaï)**
 - Salle : 320bis rue de Charenton, 75012 Paris
 - Horaires : Lundi, mercredi, jeudi & vendredi 20h30–22h00 / Samedi 14h–15h30 et 15h30–16h30
-- Enseignants : Paul NGUON, Romain TOMMASINO, Amin LEBSIR, Louis OUTHIER
+- Enseignants : Paul NGUON, Romain TOMMASINO, Amin LEBSIR, Louis OUTHIER, Antonio CORREIA, Florent CORREIA
 - Contact : 06 07 99 12 19
 - Site : http://thaitopteam.wordpress.com
 - Pour les tarifs, contacter la section directement.
