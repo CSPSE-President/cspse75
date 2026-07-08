@@ -27,7 +27,7 @@ Site web : https://cspse.wordpress.com
 === BUREAU ACTUEL ===
 - Président : Fabrice CHAMEROIS
 - Président d'honneur : Philippe ROUVRES
-- Vice-Président : Yacine KHELALI
+- Vice-Président : Yacine KHELLADI
 - Trésorier : Jean HERITIER
 - Trésorier Adjoint : Patrice REUSCHLÉ
 - Secrétaire Général : Jean-Philippe LEROUX
