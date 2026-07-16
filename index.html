@@ -2114,14 +2114,14 @@
   }
 
   function cMd(t) {
-    return t.replace(/&/g,'&amp;')
-      .replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;')
-      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-      .replace(/\*(.+?)\*/g,'<em>$1</em>')
-      .replace(/^- (.+)/gm,'&bull; $1')
-      .replace(/
-/g,'<br>');
+    t = t.replace(/&/g,'&amp;');
+    t = t.replace(/</g,'&lt;');
+    t = t.replace(/>/g,'&gt;');
+    t = t.replace(/[*][*](.+?)[*][*]/g,'<strong>$1</strong>');
+    t = t.replace(/[*](.+?)[*]/g,'<em>$1</em>');
+    t = t.replace(/^- (.+)/gm,'&bull; $1');
+    t = t.replace(/\n/g,'<br>');
+    return t;
   }
 })();
 </script>
