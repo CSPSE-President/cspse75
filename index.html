@@ -703,6 +703,7 @@
     <li><a href="#agenda">Agenda Traversière</a></li>
     <li><a href="#agenda-charenton">Agenda Charenton</a></li>
     <li><a href="#diplomes">Diplômes</a></li>
+    <li><a href="https://clinquant-fairy-eb731f.netlify.app/" target="_blank" style="color:var(--accent);">💬 Aide</a></li>
     <li><a href="gestion.html" style="color:var(--rouge);">🔒 Gestion</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -751,6 +752,12 @@
         <div class="sport-equipe-profs">🥋 <a href="https://cspse.wordpress.com/wp-content/uploads/2018/10/dejeps_aikido_reushlepatrice.png" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Patrice Reuschlé</a> (DEJEPS) · William Joseph (CQP)</div>
       </div>
 
+      <div class="sport-tarifs" style="margin-top:0.8rem;font-size:0.78rem;color:var(--gris-clair);line-height:1.7;">
+        💰 <strong style="color:var(--blanc);">Tarifs annuels</strong><br>
+        <span style="color:var(--accent);font-weight:600;">Non SNCF</span> : 415 € <span style="opacity:0.7;">(cours 370 € + licence 45 €)</span><br>
+        <span style="color:var(--accent);font-weight:600;">SNCF</span> <span style="opacity:0.7;">(agents ou parents proches)</span> : 230 € <span style="opacity:0.7;">(cours 185 € + licence 45 €)</span><br>
+        <span style="color:var(--accent);font-weight:600;">Licencié autre club</span> : 240 € <span style="opacity:0.7;">(accès illimité tous cours et dojos)</span>
+      </div>
 
       <div class="sport-reseaux" style="margin-top:0.7rem;font-size:0.78rem;display:flex;flex-wrap:wrap;gap:0.6rem;">
         <a href="https://www.aikidopatrice.com/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">🌐 Site web</a>
@@ -783,9 +790,6 @@
       </div>
 
 
-      <div style="margin-top:0.8rem;border-radius:8px;overflow:hidden;">
-        <img src="https://gym-cspse.lescigales.org/gym_fente_3.png" alt="Gym CSPSE" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;">
-      </div>
       <div class="sport-reseaux" style="margin-top:0.7rem;font-size:0.78rem;display:flex;flex-wrap:wrap;gap:0.6rem;">
         <a href="https://gym-cspse.lescigales.org/Index.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">🌐 Site web</a>
         <a href="https://www.facebook.com/p/Gym-Cspse-100014318415740/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">📘 Facebook</a>
@@ -1746,6 +1750,7 @@
     <li><a href="#sections">Sports</a></li>
     <li><a href="#infos">Le club</a></li>
     <li><a href="#diplomes">Diplômes</a></li>
+    <li><a href="https://clinquant-fairy-eb731f.netlify.app/" target="_blank" style="color:var(--accent);">💬 Aide</a></li>
     <li><a href="gestion.html" style="color:var(--rouge);">🔒 Gestion</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -1861,273 +1866,5 @@
     });
   }
 </script>
-
-<!-- ── CHATBOT CSPSE ── -->
-<style>
-  #chat-fab {
-    position: fixed; bottom: 28px; right: 28px;
-    width: 64px; height: 64px; border-radius: 50%;
-    background: linear-gradient(135deg, #002060, #0055c8);
-    color: white; border: none; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 24px rgba(0,48,135,.45);
-    transition: transform .2s, box-shadow .2s; z-index: 9999;
-  }
-  #chat-fab:hover { transform: scale(1.08); }
-  .fab-badge {
-    position: absolute; top: -2px; right: -2px;
-    width: 18px; height: 18px; background: #e8001c;
-    border-radius: 50%; border: 2px solid white;
-    animation: cpulse 2s infinite;
-  }
-  @keyframes cpulse { 0%,100%{transform:scale(1)}50%{transform:scale(1.25)} }
-  #chat-window {
-    position: fixed; bottom: 108px; right: 28px;
-    width: 390px; height: 580px; background: #f5f6fc;
-    border-radius: 20px; box-shadow: 0 8px 48px rgba(0,0,0,.18);
-    display: none; flex-direction: column; overflow: hidden; z-index: 9998;
-    transform-origin: bottom right; font-family: inherit;
-  }
-  #chat-window.cvisible {
-    display: flex;
-    animation: cslideUp .25s cubic-bezier(.34,1.56,.64,1);
-  }
-  @keyframes cslideUp {
-    from{opacity:0;transform:scale(.85) translateY(20px)}
-    to{opacity:1;transform:scale(1) translateY(0)}
-  }
-  .c-header {
-    background: linear-gradient(135deg, #001a52 0%, #002f87 55%, #0055c8 100%);
-    padding: 16px 18px; display: flex; align-items: center; gap: 14px; flex-shrink: 0;
-  }
-  .c-logo {
-    width: 46px; height: 46px; border-radius: 50%;
-    background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.3);
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 12px; color: white; line-height: 1.15;
-    text-align: center; flex-shrink: 0;
-  }
-  .c-header-info { flex: 1; }
-  .c-title { font-weight: 800; font-size: 17px; color: white; }
-  .c-sub { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 1px; }
-  .c-online { display:flex; align-items:center; gap:5px; font-size:11px; color:#7affa8; margin-top:3px; }
-  .c-dot { width:7px; height:7px; background:#7affa8; border-radius:50%; animation:cpulse 2s infinite; }
-  #c-messages {
-    flex:1; overflow-y:auto; padding:14px 12px;
-    display:flex; flex-direction:column; gap:10px; scroll-behavior:smooth;
-  }
-  #c-messages::-webkit-scrollbar{width:4px}
-  #c-messages::-webkit-scrollbar-thumb{background:#c7d2fe;border-radius:2px}
-  .c-msg { display:flex; gap:8px; animation:cfadeIn .2s ease; }
-  .c-msg.cuser { flex-direction:row-reverse; }
-  @keyframes cfadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-  .c-av {
-    width:30px; height:30px; border-radius:50%; flex-shrink:0;
-    display:flex; align-items:center; justify-content:center;
-    font-size:11px; font-weight:700; margin-top:2px;
-  }
-  .c-av.cbot { background:linear-gradient(135deg,#002f87,#0055c8); color:white; }
-  .c-av.cuser { background:#dde5ff; color:#3730a3; font-size:14px; }
-  .c-bubble { max-width:78%; padding:10px 14px; border-radius:16px; font-size:13.5px; line-height:1.6; color:#111827; }
-  .c-msg.cbot .c-bubble { background:white; border-radius:4px 16px 16px 16px; box-shadow:0 1px 5px rgba(0,0,0,.08); }
-  .c-msg.cuser .c-bubble { background:linear-gradient(135deg,#002f87,#0055c8); color:white; border-radius:16px 4px 16px 16px; }
-  .c-bubble strong { font-weight:700; }
-  #c-sugg {
-    padding:6px 12px 10px; display:flex; flex-wrap:wrap; gap:6px;
-    flex-shrink:0; background:#f5f6fc; border-top:1px solid #e0e7ff;
-  }
-  .c-chip {
-    background:white; border:1.5px solid #c7d2fe; color:#002f87;
-    font-size:11.5px; font-weight:600; padding:5px 12px;
-    border-radius:20px; cursor:pointer; transition:all .15s;
-  }
-  .c-chip:hover { background:#002f87; color:white; border-color:#002f87; }
-  .c-input-area {
-    padding:10px 12px 14px; background:white; border-top:1px solid #e8eaf6;
-    display:flex; gap:8px; align-items:flex-end; flex-shrink:0;
-  }
-  #c-input {
-    flex:1; border:1.5px solid #e0e7ff; border-radius:12px; padding:9px 13px;
-    font-size:13.5px; background:#f5f6fc; color:#111827;
-    resize:none; outline:none; max-height:80px; line-height:1.4;
-    transition:border-color .2s; font-family: inherit;
-  }
-  #c-input:focus { border-color:#002f87; background:white; }
-  #c-input::placeholder { color:#9ca3af; }
-  #c-send {
-    width:40px; height:40px; border-radius:12px;
-    background:linear-gradient(135deg,#002f87,#0055c8);
-    border:none; color:white; cursor:pointer; flex-shrink:0;
-    display:flex; align-items:center; justify-content:center;
-    transition:opacity .2s,transform .15s;
-  }
-  #c-send:disabled{opacity:.4;cursor:not-allowed}
-  #c-send:not(:disabled):hover{transform:scale(1.06)}
-  .c-typing span {
-    display:inline-block; width:6px; height:6px;
-    background:#002f87; border-radius:50%; margin:0 2px;
-    animation:cbounce 1.2s infinite;
-  }
-  .c-typing span:nth-child(2){animation-delay:.2s}
-  .c-typing span:nth-child(3){animation-delay:.4s}
-  @keyframes cbounce{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-5px);opacity:1}}
-  @media(max-width:440px){
-    #chat-window{width:calc(100vw - 20px);right:10px;bottom:88px;height:510px}
-    #chat-fab{right:14px;bottom:14px}
-  }
-</style>
-
-<button id="chat-fab" aria-label="Ouvrir l'assistant">
-  <div class="fab-badge" id="cfab-badge"></div>
-  <svg id="cfab-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-  </svg>
-  <svg id="cfab-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none">
-    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-  </svg>
-</button>
-
-<div id="chat-window">
-  <div class="c-header">
-    <div class="c-logo">CS<br>PSE</div>
-    <div class="c-header-info">
-      <div class="c-title">Assistant CSPSE</div>
-      <div class="c-sub">Cheminots Sportifs de Paris-Sud-Est</div>
-      <div class="c-online"><div class="c-dot"></div>En ligne &middot; 8 sections sportives</div>
-    </div>
-  </div>
-  <div id="c-messages"></div>
-  <div id="c-sugg">
-    <button class="c-chip" onclick="cSendSugg(this)">Quelles sections proposez-vous ?</button>
-    <button class="c-chip" onclick="cSendSugg(this)">Horaires et lieux ?</button>
-    <button class="c-chip" onclick="cSendSugg(this)">Comment s'inscrire ?</button>
-    <button class="c-chip" onclick="cSendSugg(this)">Ou se garer ?</button>
-  </div>
-  <div class="c-input-area">
-    <textarea id="c-input" rows="1" placeholder="Posez votre question..."></textarea>
-    <button id="c-send" disabled>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-      </svg>
-    </button>
-  </div>
-</div>
-
-<script>
-(function() {
-  var cHistory = [];
-  var cLoading = false;
-  var cSuggHidden = false;
-  var cFab     = document.getElementById('chat-fab');
-  var cBadge   = document.getElementById('cfab-badge');
-  var cIcoChat = document.getElementById('cfab-chat');
-  var cIcoX    = document.getElementById('cfab-close');
-  var cWin     = document.getElementById('chat-window');
-  var cMsgs    = document.getElementById('c-messages');
-  var cInput   = document.getElementById('c-input');
-  var cSend    = document.getElementById('c-send');
-  var cSugg    = document.getElementById('c-sugg');
-
-  cFab.addEventListener('click', function() {
-    var open = cWin.classList.toggle('cvisible');
-    cIcoChat.style.display = open ? 'none'  : 'block';
-    cIcoX.style.display    = open ? 'block' : 'none';
-    cBadge.style.display   = open ? 'none'  : 'block';
-    if (open) { cInput.focus(); cScrollBottom(); }
-  });
-
-  cInput.addEventListener('input', function() {
-    cSend.disabled = cInput.value.trim().length === 0 || cLoading;
-    cInput.style.height = 'auto';
-    cInput.style.height = Math.min(cInput.scrollHeight, 80) + 'px';
-  });
-
-  cInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); cSendMsg(); }
-  });
-
-  cSend.addEventListener('click', function() { cSendMsg(); });
-
-  function cSendSugg(btn) { cHideSugg(); cSendMsg(btn.textContent.trim()); }
-  function cHideSugg() { if (!cSuggHidden) { cSugg.style.display='none'; cSuggHidden=true; } }
-
-  cAppendMsg('bot', 'Bonjour et bienvenue au C.S.P.S.E. !\n\nCheminots Sportifs de Paris-Sud-Est\n\nJe peux vous renseigner sur nos 8 sections sportives, les horaires, les lieux de pratique ou les inscriptions.\n\nComment puis-je vous aider ?');
-
-  function cSendMsg(text) {
-    var msg = (text || cInput.value).trim();
-    if (!msg || cLoading) return;
-    cHideSugg();
-    cInput.value = '';
-    cInput.style.height = 'auto';
-    cSend.disabled = true;
-    cAppendMsg('user', msg);
-    cHistory.push({ role: 'user', content: msg });
-    var typEl = cAppendTyping();
-    cLoading = true;
-    fetch('/.netlify/functions/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: cHistory })
-    })
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
-      var reply = (data.content || []).map(function(b) { return b.text || ''; }).join('');
-      if (!reply) reply = "Desole, je n'ai pas pu repondre. Contactez-nous au 06 07 99 12 79 ou cspse75@gmail.com";
-      typEl.remove();
-      cAppendMsg('bot', reply);
-      cHistory.push({ role: 'assistant', content: reply });
-    })
-    .catch(function() {
-      typEl.remove();
-      cAppendMsg('bot', "Une erreur s'est produite. Contactez-nous : 06 07 99 12 79 ou cspse75@gmail.com");
-    })
-    .finally(function() {
-      cLoading = false;
-      cSend.disabled = cInput.value.trim().length === 0;
-    });
-  }
-
-  function cAppendMsg(role, text) {
-    var wrap = document.createElement('div');
-    wrap.className = 'c-msg ' + (role === 'bot' ? 'cbot' : 'cuser');
-    var av = document.createElement('div');
-    av.className = 'c-av ' + (role === 'bot' ? 'cbot' : 'cuser');
-    av.textContent = role === 'bot' ? 'CS' : '?';
-    var bub = document.createElement('div');
-    bub.className = 'c-bubble';
-    bub.innerHTML = cMd(text);
-    wrap.appendChild(av);
-    wrap.appendChild(bub);
-    cMsgs.appendChild(wrap);
-    cScrollBottom();
-    return wrap;
-  }
-
-  function cAppendTyping() {
-    var wrap = document.createElement('div');
-    wrap.className = 'c-msg cbot';
-    wrap.innerHTML = '<div class="c-av cbot">CS</div><div class="c-bubble"><div class="c-typing"><span></span><span></span><span></span></div></div>';
-    cMsgs.appendChild(wrap);
-    cScrollBottom();
-    return wrap;
-  }
-
-  function cScrollBottom() {
-    requestAnimationFrame(function() { cMsgs.scrollTop = cMsgs.scrollHeight; });
-  }
-
-  function cMd(t) {
-    t = t.replace(/&/g,'&amp;');
-    t = t.replace(/</g,'&lt;');
-    t = t.replace(/>/g,'&gt;');
-    t = t.replace(/[*][*](.+?)[*][*]/g,'<strong>$1</strong>');
-    t = t.replace(/[*](.+?)[*]/g,'<em>$1</em>');
-    t = t.replace(/^- (.+)/gm,'&bull; $1');
-    t = t.replace(/\n/g,'<br>');
-    return t;
-  }
-})();
-</script>
-<!-- ── FIN CHATBOT ── -->
 </body>
 </html>
