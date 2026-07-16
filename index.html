@@ -703,7 +703,6 @@
     <li><a href="#agenda">Agenda Traversière</a></li>
     <li><a href="#agenda-charenton">Agenda Charenton</a></li>
     <li><a href="#diplomes">Diplômes</a></li>
-    <li><a href="https://clinquant-fairy-eb731f.netlify.app/" target="_blank" style="color:var(--accent);">💬 Aide</a></li>
     <li><a href="gestion.html" style="color:var(--rouge);">🔒 Gestion</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -1744,7 +1743,6 @@
     <li><a href="#sections">Sports</a></li>
     <li><a href="#infos">Le club</a></li>
     <li><a href="#diplomes">Diplômes</a></li>
-    <li><a href="https://clinquant-fairy-eb731f.netlify.app/" target="_blank" style="color:var(--accent);">💬 Aide</a></li>
     <li><a href="gestion.html" style="color:var(--rouge);">🔒 Gestion</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -2017,7 +2015,6 @@
   var cHistory = [];
   var cLoading = false;
   var cSuggHidden = false;
-
   var cFab     = document.getElementById('chat-fab');
   var cBadge   = document.getElementById('cfab-badge');
   var cIcoChat = document.getElementById('cfab-chat');
@@ -2051,7 +2048,7 @@
   function cSendSugg(btn) { cHideSugg(); cSendMsg(btn.textContent.trim()); }
   function cHideSugg() { if (!cSuggHidden) { cSugg.style.display='none'; cSuggHidden=true; } }
 
-  cAppendMsg('bot', 'Bonjour et bienvenue au C.S.P.S.E. !\n\nCheminots Sportifs de Paris-Sud-Est\nDevise : L'Esprit Cheminot dans un Corps Sain\n\nJe peux vous renseigner sur nos 8 sections sportives, les horaires, les lieux de pratique ou les inscriptions.\n\nComment puis-je vous aider ?');
+  cAppendMsg('bot', 'Bonjour et bienvenue au C.S.P.S.E. !\n\nCheminots Sportifs de Paris-Sud-Est\n\nJe peux vous renseigner sur nos 8 sections sportives, les horaires, les lieux de pratique ou les inscriptions.\n\nComment puis-je vous aider ?');
 
   function cSendMsg(text) {
     var msg = (text || cInput.value).trim();
@@ -2064,7 +2061,6 @@
     cHistory.push({ role: 'user', content: msg });
     var typEl = cAppendTyping();
     cLoading = true;
-
     fetch('/.netlify/functions/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
